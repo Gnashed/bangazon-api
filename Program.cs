@@ -10,7 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-#region Add this above the `var app = builder.Build();` line. The middle statement is the most important since it makes an instance of the BanganzonDbContext class available to our endpoints.
+#region Check comment below this line.
+// Add this above the `var app = builder.Build();` line. The middle statement is the most important since it makes an
+// instance of the BanganzonDbContext class available to our endpoints.
+
 // allows passing datetimes without time zone data 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
