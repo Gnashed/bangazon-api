@@ -27,38 +27,84 @@ public class BangazonDbContext : DbContext
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
     // Seed data.
-    modelBuilder.Entity<Customer>().HasData(new Customer[]
-    {
-
-    });
-    modelBuilder.Entity<Order>().HasData(new Order[]
-    {
-
-    });
-    modelBuilder.Entity<OrderItems>().HasData(new OrderItems[]
-    {
-
-    });    
-    modelBuilder.Entity<PaymentMethod>().HasData(new PaymentMethod[]
-    {
-
-    });
-    modelBuilder.Entity<Product>().HasData(new Product[]
-    {
-
-    });
-    modelBuilder.Entity<Seller>().HasData(new Seller[]
-    {
-
-    });
-    modelBuilder.Entity<Store>().HasData(new Store[]
-    {
-
-    });
     modelBuilder.Entity<User>().HasData(new User[]
     {
-
+      new User {Id = 1, Uid = "zmwuMjpI5RXABj6mImfK2O586Qf1", IsSeller = false}, // Uid is auth'd using email+password combo.
+      new User {Id = 2, Uid = "change-me", IsSeller = false},
+      new User {Id = 3, Uid = "change-me-2", IsSeller = true},
     });
     
+    modelBuilder.Entity<Customer>().HasData(new Customer[]
+    {
+      new Customer
+      {
+        Id = 1, FirstName = "Tion", LastName = "Blackmon", Address = "1234 Apple Rd.",
+        City = "Nashville", State = "TN", ZipCode = 37000, UserId = 1
+      },
+      new Customer
+      {
+        Id = 2, FirstName = "Admin", LastName = "(SWE)", Address = "HQ",
+        City = "Nashville", State = "TN", ZipCode = 37000, UserId = 2
+      },
+    });
+    
+    modelBuilder.Entity<PaymentMethod>().HasData(new PaymentMethod[]
+    {
+      new PaymentMethod 
+      {
+        Id = 1, 
+        CardNumber = "4444-4444-4444-4444", 
+        ExpirationDate = new DateTime(2028, 5, 9),
+        SecurityCode = 778,
+        CustomerId = 1,
+      }
+    });
+    
+    modelBuilder.Entity<Seller>().HasData(new Seller[]
+    {
+      new Seller { Id = 1, StoreId = 999, Username = "Admin_SWE", UserId = 3 },
+    });
+    
+    modelBuilder.Entity<Store>().HasData(new Store[]
+    {
+      new Store { Id = 1, Name = "Admin Store", SellerId = 1},
+    });
+    
+    modelBuilder.Entity<Product>().HasData(new Product[]
+    {
+      new Product
+      {
+        Id = 1, 
+        Category = "Graphics Cards", 
+        Name = "EVGA GeForce RTX 3060 XC 12GB", 
+        Description = "The EVGA GeForce RTX 3060 12GB provides players with the ability to vanquish 1080p and " +
+                      "1440p gaming, while providing a quality NVIDIA RTX experience and a myriad of productivity " +
+                      "benefits. The card is powered by NVIDIA Ampere architecture, which doubles down on ray tracing " +
+                      "and AI performance with enhanced RT cores, Tensor Cores, and new streaming multiprocessors. " +
+                      "With 12GB of GDDR6 memory, high-end performance does not have to be sacrificed to find a card " +
+                      "for gaming and everyday use.",
+        Price = 250_00 , 
+        QuantityAvailable = 25, 
+        StoreId = 1
+      },
+    });
+    
+    modelBuilder.Entity<Order>().HasData(new Order[]
+    {
+      new Order
+      {
+        Id = 1, 
+        IsCompleted = true, 
+        OrderTotal = 250_00, 
+        OrderDate = DateTime.Now, 
+        CustomerId = 1, 
+        PaymentMethodId = 1,
+      }
+    });
+    
+    modelBuilder.Entity<OrderItems>().HasData(new OrderItems[]
+    {
+      new OrderItems { Id = 1, OrderId = 1, ProductId = 1 },
+    });
   }
 }

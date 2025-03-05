@@ -7,4 +7,5 @@ public class Store
   public int Id { get; set; }
   [Required]
   public string Name { get; set; }
+  public int SellerId { get; set; } // FK
 }

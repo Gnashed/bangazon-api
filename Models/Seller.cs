@@ -5,7 +5,7 @@ namespace Bangazon.Models;
 public class Seller
 {
   public int Id { get; set; }
-  public int  StoreId { get; set; }
+  public int  StoreId { get; set; } // FK
   [Required]
   public string Username { get; set; }
   public int UserId { get; set; } // FK

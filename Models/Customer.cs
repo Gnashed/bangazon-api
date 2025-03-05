@@ -15,7 +15,7 @@ public class Customer
   public string City { get; set; }
   [Required]
   public string State { get; set; }
-  public int Zip { get; set; }
+  public int ZipCode { get; set; }
   public int UserId { get; set; } // Fk
   public User User { get; set; }
   public List<Order> Orders { get; set; }
