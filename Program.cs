@@ -73,6 +73,10 @@ app.MapPost("/api/seller", (BangazonDbContext db, Seller seller) =>
 });
 
 app.MapGet("/api/customers", (BangazonDbContext db) => db.Customers.ToList());
+app.MapGet("/api/customer/{id}", (BangazonDbContext db, int id) =>
+{
+    return db.Customers.Include(c => c.User).Single(c => c.Id == id);
+});
 app.MapPost("/api/customer/{id}", (BangazonDbContext db, Customer customer) =>
 {
     db.Customers.Add(customer);
