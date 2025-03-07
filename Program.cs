@@ -36,7 +36,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// ============================================== Endpoints // ==============================================
+// ============================================== Endpoints  ==============================================
 app.MapGet("/api/users", (BangazonDbContext db) => db.Users.ToList());
 app.MapPost("/api/user", (BangazonDbContext db, User user) =>
 {
@@ -70,6 +70,25 @@ app.MapPost("/api/seller", (BangazonDbContext db, Seller seller) =>
     db.Sellers.Add(seller);
     db.SaveChanges();
     return Results.Created($"/api/seller/{seller.Id}", seller);
+});
+
+app.MapGet("/api/customers", (BangazonDbContext db) => db.Customers.ToList());
+app.MapPost("/api/customer/{id}", (BangazonDbContext db, Customer customer) =>
+{
+    db.Customers.Add(customer);
+    db.SaveChanges();
+    return Results.Created($"/api/customer/{customer.Id}", customer);
+});
+app.MapDelete("/api/customer/{id}", (BangazonDbContext db, int id) =>
+{
+    Customer? customerToDelete = db.Customers.SingleOrDefault(c => c.Id == id);
+    if (customerToDelete == null)
+    {
+        return Results.NotFound();
+    }
+    db.Customers.Remove(customerToDelete);
+    db.SaveChanges();
+    return Results.NoContent();
 });
 
 app.UseHttpsRedirection();
