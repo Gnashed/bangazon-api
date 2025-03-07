@@ -85,7 +85,7 @@ app.MapGet("/api/customer/{id}", (BangazonDbContext db, int id) =>
 {
     return db.Customers.Include(c => c.User).Single(c => c.Id == id);
 });
-app.MapPost("/api/customer/{id}", (BangazonDbContext db, Customer customer) =>
+app.MapPost("/api/customer", (BangazonDbContext db, Customer customer) =>
 {
     db.Customers.Add(customer);
     db.SaveChanges();
