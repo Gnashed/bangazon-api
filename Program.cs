@@ -36,8 +36,41 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// ============================================== Endpoints // ==============================================
+app.MapGet("/api/users", (BangazonDbContext db) => db.Users.ToList());
+app.MapPost("/api/user", (BangazonDbContext db, User user) =>
+{
+    db.Users.Add(user);
+    db.SaveChanges(); // Inherited method from the DbContextClass
+    return Results.Created($"/api/user/{user.Id}", user); // Creates a 201 response
+});
+app.MapDelete("/api/user/{id}", (BangazonDbContext db, int id) =>
+{
+    User? userToDelete = db.Users.SingleOrDefault(u => u.Id == id);
+    db.Users.Remove(userToDelete);
+    db.SaveChanges();
+    return Results.NoContent();
+});
+
+app.MapDelete("/api/seller/{id}", (BangazonDbContext db, int id) =>
+{
+    Seller? seller = db.Sellers.SingleOrDefault(u => u.Id == id);
+    if (seller == null)
+    {
+        return Results.NotFound();
+    }
+    db.Sellers.Remove(seller);
+    db.SaveChanges();
+    return Results.NoContent();
+});
+
+app.MapGet("/api/sellers", (BangazonDbContext db) =>  db.Sellers.ToList());
+app.MapPost("/api/seller", (BangazonDbContext db, Seller seller) =>
+{
+    db.Sellers.Add(seller);
+    db.SaveChanges();
+    return Results.Created($"/api/seller/{seller.Id}", seller);
+});
+
 app.UseHttpsRedirection();
-
-
-
 app.Run();
