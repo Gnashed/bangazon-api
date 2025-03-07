@@ -83,6 +83,7 @@ app.MapPost("/api/customer/{id}", (BangazonDbContext db, Customer customer) =>
     db.SaveChanges();
     return Results.Created($"/api/customer/{customer.Id}", customer);
 });
+
 app.MapDelete("/api/customer/{id}", (BangazonDbContext db, int id) =>
 {
     Customer? customerToDelete = db.Customers.SingleOrDefault(c => c.Id == id);
@@ -94,6 +95,27 @@ app.MapDelete("/api/customer/{id}", (BangazonDbContext db, int id) =>
     db.SaveChanges();
     return Results.NoContent();
 });
+
+app.MapGet("/api/payment-methods", (BangazonDbContext db) =>  db.PaymentMethods.ToList());
+app.MapPost("/api/customer/payment-method", (BangazonDbContext db, PaymentMethod paymentMethod) =>
+{
+    db.PaymentMethods.Add(paymentMethod);
+    db.SaveChanges();
+    return Results.Created($"/api/customer/payment-method/{paymentMethod.Id}", paymentMethod);
+});
+app.MapDelete("/api/payment-methods/{id}", (BangazonDbContext db, int id) =>
+{
+    PaymentMethod? paymentMethodToDelete = db.PaymentMethods.SingleOrDefault(pm => pm.Id == id);
+    if (paymentMethodToDelete == null)
+    {
+        return Results.NotFound();
+    }
+    db.PaymentMethods.Remove(paymentMethodToDelete);
+    db.SaveChanges();
+    return Results.NoContent();
+});
+
+// ===================================================================================================================
 
 app.UseHttpsRedirection();
 app.Run();
