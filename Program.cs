@@ -131,13 +131,13 @@ app.MapPost("/api/order", (BangazonDbContext db, Order order) =>
 });
 
 app.MapGet("/api/payment-methods", (BangazonDbContext db) =>  db.PaymentMethods.ToList());
-app.MapPost("/api/customer/payment-method", (BangazonDbContext db, PaymentMethod paymentMethod) =>
+app.MapPost("/api/payment-method", (BangazonDbContext db, PaymentMethod paymentMethod) =>
 {
     db.PaymentMethods.Add(paymentMethod);
     db.SaveChanges();
     return Results.Created($"/api/customer/payment-method/{paymentMethod.Id}", paymentMethod);
 });
-app.MapDelete("/api/payment-methods/{id}", (BangazonDbContext db, int id) =>
+app.MapDelete("/api/payment-method/{id}", (BangazonDbContext db, int id) =>
 {
     PaymentMethod? paymentMethodToDelete = db.PaymentMethods.SingleOrDefault(pm => pm.Id == id);
     if (paymentMethodToDelete == null)
