@@ -79,18 +79,6 @@ app.MapGet("/api/store/{id}", (BangazonDbContext db, int id) =>
 });
 
 app.MapGet("/api/products", (BangazonDbContext db) => db.Products.ToList());
-app.MapGet("/api/orders", (BangazonDbContext db) => db.Orders.ToList());
-app.MapGet("/api/order/{id}", (BangazonDbContext db, int id) =>
-{
-    return db.Orders.Include(o => o.Customer).SingleOrDefault(o => o.Id == id);
-});
-app.MapGet("/api/order-items/{id}", (BangazonDbContext db, int id) =>
-{
-    return db.OrderItems
-        .Include(o => o.Order)
-        .Include(o => o.Product)
-        .SingleOrDefault(o => o.Id == id);
-});
 
 app.MapGet("/api/customers", (BangazonDbContext db) => db.Customers.ToList());
 app.MapGet("/api/customer/{id}", (BangazonDbContext db, int id) =>
@@ -114,6 +102,32 @@ app.MapDelete("/api/customer/{id}", (BangazonDbContext db, int id) =>
     db.Customers.Remove(customerToDelete);
     db.SaveChanges();
     return Results.NoContent();
+});
+
+app.MapGet("/api/order-items/{id}", (BangazonDbContext db, int id) =>
+{
+    return db.OrderItems
+        .Include(o => o.Order)
+        .Include(o => o.Product)
+        .SingleOrDefault(o => o.Id == id);
+});
+app.MapPost("/api/order-items", (BangazonDbContext db, OrderItems orderItems ) =>
+{
+    db.OrderItems.Add(orderItems);
+    db.SaveChanges();
+    return Results.Created($"/api/order-items/{orderItems.Id}", orderItems);
+});
+
+app.MapGet("/api/orders", (BangazonDbContext db) => db.Orders.ToList());
+app.MapGet("/api/order/{id}", (BangazonDbContext db, int id) =>
+{
+    return db.Orders.Include(o => o.Customer).SingleOrDefault(o => o.Id == id);
+});
+app.MapPost("/api/order", (BangazonDbContext db, Order order) =>
+{
+    db.Orders.Add(order);
+    db.SaveChanges();
+    return Results.Created($"/api/order/{order.Id}", order);
 });
 
 app.MapGet("/api/payment-methods", (BangazonDbContext db) =>  db.PaymentMethods.ToList());
