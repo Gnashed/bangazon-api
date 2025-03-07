@@ -83,7 +83,7 @@ public class BangazonDbContext : DbContext
                       "and AI performance with enhanced RT cores, Tensor Cores, and new streaming multiprocessors. " +
                       "With 12GB of GDDR6 memory, high-end performance does not have to be sacrificed to find a card " +
                       "for gaming and everyday use.",
-        Price = 250_00 , 
+        Price = 250_00M , 
         QuantityAvailable = 25, 
         StoreId = 1
       },

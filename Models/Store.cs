@@ -8,4 +8,5 @@ public class Store
   [Required]
   public string Name { get; set; }
   public int SellerId { get; set; } // FK
+  public Seller Seller { get; set; }
 }

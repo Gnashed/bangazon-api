@@ -72,6 +72,20 @@ app.MapPost("/api/seller", (BangazonDbContext db, Seller seller) =>
     return Results.Created($"/api/seller/{seller.Id}", seller);
 });
 
+app.MapGet("/api/stores", (BangazonDbContext db) => db.Stores.ToList());
+app.MapGet("/api/store/{id}", (BangazonDbContext db, int id) =>
+{
+    return db.Stores.Include(s => s.Seller).SingleOrDefault(s => s.Id == id);
+});
+
+app.MapGet("/api/products", (BangazonDbContext db) => db.Products.ToList());
+app.MapGet("/api/orders", (BangazonDbContext db) => db.Orders.ToList());
+app.MapGet("/api/order/{id}", (BangazonDbContext db, int id) =>
+{
+    return db.Orders.Include(o => o.Customer).SingleOrDefault(o => o.Id == id);
+});
+app.MapGet("/api/orderitems", (BangazonDbContext db) => db.OrderItems.ToList());
+
 app.MapGet("/api/customers", (BangazonDbContext db) => db.Customers.ToList());
 app.MapGet("/api/customer/{id}", (BangazonDbContext db, int id) =>
 {
