@@ -5,6 +5,27 @@ using Microsoft.AspNetCore.Http.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("AllowMobileApp", policy =>
+//     { 
+//         policy.WithOrigins("http://localhost:8081", "http://10.0.0.42") // For RN: Add your mobile app's IP or Expo URL
+//             .AllowAnyHeader()
+//             .AllowAnyMethod();
+//     });
+// });
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials();
+    });
+});
+
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -28,6 +49,7 @@ builder.Services.Configure<JsonOptions>(options =>
 #endregion
 
 var app = builder.Build();
+app.UseCors();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -35,6 +57,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
 
 // ============================================== Endpoints  ==============================================
 app.MapGet("/api/users", (BangazonDbContext db) => db.Users.ToList());
@@ -150,6 +174,4 @@ app.MapDelete("/api/payment-method/{id}", (BangazonDbContext db, int id) =>
 });
 
 // ===================================================================================================================
-
-app.UseHttpsRedirection();
 app.Run();
