@@ -173,5 +173,51 @@ app.MapDelete("/api/payment-method/{id}", (BangazonDbContext db, int id) =>
     return Results.NoContent();
 });
 
+app.MapPut("/api/customer/{id}", (BangazonDbContext db, int id, Customer customer) =>
+{
+    Customer? customerToUpdate = db.Customers.SingleOrDefault(c => c.Id == id);
+    if (customerToUpdate == null)
+    {
+        return Results.NotFound();
+    }
+    customerToUpdate.FirstName = customer.FirstName;
+    customerToUpdate.LastName = customer.LastName;
+    customerToUpdate.Address = customer.Address;
+    customerToUpdate.City = customer.City;
+    customerToUpdate.State = customer.State;
+    customerToUpdate.ZipCode = customer.ZipCode;
+    
+    db.SaveChanges();
+    return Results.NoContent();
+});
+
+app.MapPut("/api/sellers/{id}", (BangazonDbContext db, int id, Seller seller) =>
+{
+    Seller? sellerToUpdate = db.Sellers.SingleOrDefault(s => s.Id == id);
+    if (sellerToUpdate == null)
+    {
+        return Results.NotFound();
+    }
+    sellerToUpdate.StoreId = seller.StoreId;
+    sellerToUpdate.Username = seller.Username;
+    
+    db.SaveChanges();
+    return Results.NoContent();
+});
+
+app.MapPut("/api/payment-methods/{id}", (BangazonDbContext db, int id, PaymentMethod paymentMethod) =>
+{
+    PaymentMethod? paymentMethodToUpdate = db.PaymentMethods.SingleOrDefault(pm => pm.Id == id);
+    if (paymentMethodToUpdate == null)
+    {
+        return Results.NotFound();
+    }
+    paymentMethodToUpdate.CardNumber = paymentMethod.CardNumber;
+    paymentMethodToUpdate.SecurityCode = paymentMethod.SecurityCode;
+    paymentMethodToUpdate.ExpirationDate = paymentMethod.ExpirationDate;
+
+    db.SaveChanges();
+    return Results.NoContent();
+});
 // ===================================================================================================================
 app.Run();
