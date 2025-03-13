@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(BangazonDbContext))]
-    partial class BangazonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250311035958_RemoveRequiredUserModel")]
+    partial class RemoveRequiredUserModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,7 +136,7 @@ namespace Bangazon.Migrations
                             Id = 1,
                             CustomerId = 1,
                             IsCompleted = true,
-                            OrderDate = new DateTime(2025, 3, 12, 23, 22, 52, 832, DateTimeKind.Local).AddTicks(8270),
+                            OrderDate = new DateTime(2025, 3, 10, 22, 59, 58, 322, DateTimeKind.Local).AddTicks(5700),
                             OrderTotal = 25000m,
                             PaymentMethodId = 1
                         });
@@ -257,76 +260,6 @@ namespace Bangazon.Migrations
                             Name = "EVGA GeForce RTX 3060 XC 12GB",
                             Price = 25000m,
                             QuantityAvailable = 25,
-                            StoreId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Category = "Processors",
-                            Description = "The AMD Ryzen 7 5800X is built on the Zen 3 architecture, offering 8 cores and 16 threads. With a base clock of 3.8 GHz and a max boost clock of 4.7 GHz, it's perfect for gaming, streaming, and content creation. The 5800X supports PCIe 4.0 and features an unlocked multiplier for overclocking enthusiasts.",
-                            Name = "AMD Ryzen 7 5800X",
-                            Price = 35000m,
-                            QuantityAvailable = 15,
-                            StoreId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Category = "Motherboards",
-                            Description = "The ASUS ROG Strix B550-F Gaming motherboard is designed for AMD Ryzen processors and features PCIe 4.0 support, robust power delivery, and AI noise-canceling technology. It includes multiple M.2 slots, WiFi 6, and a high-performance VRM cooling solution for enhanced overclocking capabilities.",
-                            Name = "ASUS ROG Strix B550-F Gaming",
-                            Price = 18000m,
-                            QuantityAvailable = 10,
-                            StoreId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Category = "Memory",
-                            Description = "Corsair Vengeance RGB Pro series DDR4 memory is designed for high-performance overclocking. It features dynamic multi-zone RGB lighting and is optimized for Intel and AMD platforms. The memory is built with a custom PCB and tightly screened memory chips to ensure excellent performance and stability.",
-                            Name = "Corsair Vengeance RGB Pro 32GB (2 x 16GB) DDR4-3600",
-                            Price = 15000m,
-                            QuantityAvailable = 20,
-                            StoreId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Category = "Storage",
-                            Description = "The Samsung 970 EVO Plus 1TB NVMe SSD delivers top-tier performance with read speeds up to 3,500 MB/s and write speeds up to 3,300 MB/s. Powered by Samsung's V-NAND technology, it ensures reliability and durability for demanding workloads and gaming.",
-                            Name = "Samsung 970 EVO Plus 1TB NVMe SSD",
-                            Price = 12000m,
-                            QuantityAvailable = 30,
-                            StoreId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Category = "Power Supplies",
-                            Description = "The Seasonic Focus GX-850 provides 850W of clean and stable power with 80 PLUS Gold efficiency. It's fully modular, ensuring easy cable management and reduced clutter. It features a 10-year warranty and premium hybrid fan control for silent operation.",
-                            Name = "Seasonic Focus GX-850, 850W 80+ Gold",
-                            Price = 14000m,
-                            QuantityAvailable = 12,
-                            StoreId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Category = "Cooling",
-                            Description = "The Noctua NH-D15 Chromax.Black is a premium dual-tower CPU cooler known for its outstanding cooling performance and quiet operation. It features six heat pipes, two NF-A15 140mm fans, and a sleek all-black design.",
-                            Name = "Noctua NH-D15 Chromax.Black",
-                            Price = 10000m,
-                            QuantityAvailable = 18,
-                            StoreId = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Category = "Cases",
-                            Description = "The Lian Li PC-O11 Dynamic is a premium mid-tower case designed for performance and aesthetics. It features a tempered glass front and side panel, support for multiple radiators, and excellent cable management options.",
-                            Name = "Lian Li PC-O11 Dynamic",
-                            Price = 13000m,
-                            QuantityAvailable = 22,
                             StoreId = 1
                         });
                 });

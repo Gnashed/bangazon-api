@@ -28,6 +28,7 @@ builder.Services.AddCors(options =>
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -57,8 +58,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
 
 // ============================================== Endpoints  ==============================================
 app.MapGet("/api/users", (BangazonDbContext db) => db.Users.ToList());
@@ -219,5 +218,19 @@ app.MapPut("/api/payment-methods/{id}", (BangazonDbContext db, int id, PaymentMe
     db.SaveChanges();
     return Results.NoContent();
 });
+
+// Query parameters must be handled in lambda expression, not in the route.
+app.MapGet("/api/user", (BangazonDbContext db, string? uid) =>
+{
+    User? userToLocate = db.Users.SingleOrDefault(u => u.Uid == uid);
+    if (userToLocate == null)
+    {
+        return Results.NotFound();
+    }
+    return Results.Ok(userToLocate);
+});
 // ===================================================================================================================
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
 app.Run();
