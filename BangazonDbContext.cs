@@ -321,6 +321,21 @@ public class BangazonDbContext : DbContext
           StoreId = 3,
           ImageUrl = "https://mygalf.com/uploads/product_image/1669367949Hypervolt2_MainPic.jpeg",
           DateAdded = new DateTime(2025, 3, 13)
+      },
+      new Product
+      {
+        Id = 21,
+        Category = "Fitness Equipment",
+        Name = "Bowflex BodyTower",
+        Description = "Multi-function bodyweight trainer designed for push-ups, pull-ups, dips, squats, and more.",
+        Price = 399.99M,
+        QuantityAvailable = 9,
+        StoreId = 3,
+        ImageUrl = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.bowflex.com%2Fon%2Fdemandware.stati" +
+                   "c%2F-%2FSites-nautilus-master-catalog%2Fdefault%2Fdwef1d0694%2Fimages%2Fbowflex%2Fhome-gyms%2Fbodyto" +
+                   "wer%2Fbowflex-body-tower-home-gym-100243.png&f=1&nofb=1&ipt=f425033fd1393ed3a30be0fb314a557a5ab2604" +
+                   "1e395a47222128ad035a03fca&ipo=images",
+        DateAdded = new DateTime(2025, 3, 15),
       }
     });
     

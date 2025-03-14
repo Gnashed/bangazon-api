@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(BangazonDbContext))]
-    partial class BangazonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250314231536_AddedNewProductInProductTable")]
+    partial class AddedNewProductInProductTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,7 +136,7 @@ namespace Bangazon.Migrations
                             Id = 1,
                             CustomerId = 1,
                             IsCompleted = true,
-                            OrderDate = new DateTime(2025, 3, 14, 18, 17, 54, 704, DateTimeKind.Local).AddTicks(4440),
+                            OrderDate = new DateTime(2025, 3, 14, 18, 15, 36, 226, DateTimeKind.Local).AddTicks(8560),
                             OrderTotal = 25000m,
                             PaymentMethodId = 1
                         });

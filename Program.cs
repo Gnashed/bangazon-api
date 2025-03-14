@@ -135,6 +135,34 @@ app.MapPost("/api/product", (BangazonDbContext db, Product product) =>
     db.SaveChanges();
     return Results.Created($"/api/product/{product.Id}", product);
 });
+app.MapPut("/api/product/{id}", (BangazonDbContext db, int id, Product product) =>
+{
+    Product? productToUpdate = db.Products.SingleOrDefault(p => p.Id == id);
+    if (productToUpdate == null)
+    {
+        return Results.NotFound();
+    }
+    productToUpdate.Category = product.Category;
+    productToUpdate.Name = product.Name;
+    productToUpdate.Description = product.Description;
+    productToUpdate.Price = product.Price;
+    productToUpdate.QuantityAvailable = product.QuantityAvailable;
+    productToUpdate.StoreId = product.Store.Id;
+    db.SaveChanges();
+    
+    return Results.NoContent();
+});
+app.MapDelete("/api/product/{id}", (BangazonDbContext db, int id) =>
+{
+    Product? productToDelete = db.Products.SingleOrDefault(p => p.Id == id);
+    if (productToDelete == null)
+    {
+        return Results.NotFound();
+    }
+    db.Products.Remove(productToDelete);
+    db.SaveChanges();
+    return Results.NoContent();
+});
 
 app.MapGet("/api/customers", (BangazonDbContext db) => db.Customers.ToList());
 app.MapGet("/api/customer/{id}", (BangazonDbContext db, int id) =>
