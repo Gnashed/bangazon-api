@@ -122,6 +122,13 @@ app.MapGet("/api/products/latest", (BangazonDbContext db) =>
         .AsEnumerable()
         .OrderBy(p => p.DateAdded).Take(20).Reverse();
 });
+app.MapGet("/api/product/{id}", (BangazonDbContext db, int id) =>
+{
+    return db.Products
+        .Include(p => p.Store)
+        .ThenInclude(p => p.Seller)
+        .SingleOrDefault(p => p.Id == id);
+});
 app.MapPost("/api/product", (BangazonDbContext db, Product product) =>
 {
     db.Products.Add(product);
