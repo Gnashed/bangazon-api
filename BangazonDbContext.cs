@@ -74,113 +74,243 @@ public class BangazonDbContext : DbContext
     {
       new Product
       {
-        Id = 1, 
-        Category = "Graphics Cards", 
-        Name = "EVGA GeForce RTX 3060 XC 12GB", 
-        Description = "The EVGA GeForce RTX 3060 12GB provides players with the ability to vanquish 1080p and " +
-                      "1440p gaming, while providing a quality NVIDIA RTX experience and a myriad of productivity " +
-                      "benefits. The card is powered by NVIDIA Ampere architecture, which doubles down on ray tracing " +
-                      "and AI performance with enhanced RT cores, Tensor Cores, and new streaming multiprocessors. " +
-                      "With 12GB of GDDR6 memory, high-end performance does not have to be sacrificed to find a card " +
-                      "for gaming and everyday use.",
-        Price = 250_00M , 
-        QuantityAvailable = 25, 
-        StoreId = 1,
-        imageUrl = "https://i.pinimg.com/originals/8c/4a/a4/8c4aa4434669caabab3ef0e0fea4958d.jpg"
+          Id = 1, 
+          Category = "Graphics Cards", 
+          Name = "EVGA GeForce RTX 3060 XC 12GB", 
+          Description = "The EVGA GeForce RTX 3060 12GB provides players with the ability to vanquish 1080p and 1440p gaming...",
+          Price = 250_00M, 
+          QuantityAvailable = 25, 
+          StoreId = 1,
+          ImageUrl = "https://i.pinimg.com/originals/8c/4a/a4/8c4aa4434669caabab3ef0e0fea4958d.jpg",
+          DateAdded = new DateTime(2025, 3, 14)
       },
       new Product
       {
           Id = 2, 
           Category = "Processors", 
           Name = "AMD Ryzen 7 5800X", 
-          Description = "The AMD Ryzen 7 5800X is built on the Zen 3 architecture, offering 8 cores and 16 threads. " +
-                        "With a base clock of 3.8 GHz and a max boost clock of 4.7 GHz, it's perfect for gaming, " +
-                        "streaming, and content creation. The 5800X supports PCIe 4.0 and features an unlocked multiplier " +
-                        "for overclocking enthusiasts.",
+          Description = "The AMD Ryzen 7 5800X is built on the Zen 3 architecture, offering 8 cores and 16 threads...",
           Price = 350_00M, 
           QuantityAvailable = 15, 
           StoreId = 1,
-          imageUrl = "https://www.techinn.com/f/13795/137954422/amd-ryzen-7-5800x-3.8ghz.jpg"
+          ImageUrl = "https://www.techinn.com/f/13795/137954422/amd-ryzen-7-5800x-3.8ghz.jpg",
+          DateAdded = new DateTime(2025, 3, 12)
       },
       new Product
       {
           Id = 3, 
           Category = "Motherboards", 
           Name = "ASUS ROG Strix B550-F Gaming", 
-          Description = "The ASUS ROG Strix B550-F Gaming motherboard is designed for AMD Ryzen processors and features " +
-                        "PCIe 4.0 support, robust power delivery, and AI noise-canceling technology. It includes " +
-                        "multiple M.2 slots, WiFi 6, and a high-performance VRM cooling solution for enhanced overclocking " +
-                        "capabilities.",
+          Description = "The ASUS ROG Strix B550-F Gaming motherboard is designed for AMD Ryzen processors...",
           Price = 180_00M, 
           QuantityAvailable = 10, 
           StoreId = 1,
-          imageUrl = "https://images.anandtech.com/doci/15868/ROG-STRIX-B550-F-GAMING-WI-FI-What_s-inside-the-Box.jpg"
+          ImageUrl = "https://images.anandtech.com/doci/15868/ROG-STRIX-B550-F-GAMING-WI-FI-What_s-inside-the-Box.jpg",
+          DateAdded = new DateTime(2025, 3, 10)
       },
       new Product
       {
           Id = 4, 
           Category = "Memory", 
-          Name = "Corsair Vengeance RGB Pro 32GB (2 x 16GB) DDR4-3600", 
-          Description = "Corsair Vengeance RGB Pro series DDR4 memory is designed for high-performance overclocking. " +
-                        "It features dynamic multi-zone RGB lighting and is optimized for Intel and AMD platforms. " +
-                        "The memory is built with a custom PCB and tightly screened memory chips to ensure excellent " +
-                        "performance and stability.",
+          Name = "Corsair Vengeance RGB Pro 32GB", 
+          Description = "Corsair Vengeance RGB Pro series DDR4 memory is designed for high-performance overclocking...",
           Price = 150_00M, 
           QuantityAvailable = 20, 
           StoreId = 1,
-          imageUrl = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6449/6449223_sd.jpg"
+          ImageUrl = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6449/6449223_sd.jpg",
+          DateAdded = new DateTime(2025, 3, 8)
       },
       new Product
       {
-          Id = 5, 
-          Category = "Storage", 
-          Name = "Samsung 970 EVO Plus 1TB NVMe SSD", 
-          Description = "The Samsung 970 EVO Plus 1TB NVMe SSD delivers top-tier performance with read speeds up to " +
-                        "3,500 MB/s and write speeds up to 3,300 MB/s. Powered by Samsung's V-NAND technology, " +
-                        "it ensures reliability and durability for demanding workloads and gaming.",
-          Price = 120_00M, 
+          Id = 9, 
+          Category = "Basketball Products", 
+          Name = "Spalding NBA Basketball", 
+          Description = "Official size and weight, indoor/outdoor use.",
+          Price = 29_99M, 
+          QuantityAvailable = 15, 
+          StoreId = 2,
+          ImageUrl = "spalding_nba_ball.jpg",
+          DateAdded = new DateTime(2025, 2, 25)
+      },
+      new Product
+      {
+          Id = 10, 
+          Category = "Basketball Products", 
+          Name = "Nike Elite Basketball Shorts", 
+          Description = "Lightweight and breathable, with Dri-FIT technology.",
+          Price = 45_00M, 
           QuantityAvailable = 30, 
-          StoreId = 1,
-          imageUrl = "https://media.gamestop.com/i/gamestop/11165893_ALT03/Samsung-970-EVO-Plus-1TB-PCIe-3.0-NVMe-M.2-Internal-V-NAND-Solid-State-Drive?fmt=auto"
+          StoreId = 2,
+          ImageUrl = "nike_elite_shorts.jpg",
+          DateAdded = new DateTime(2025, 2, 28)
       },
       new Product
       {
-          Id = 6, 
-          Category = "Power Supplies", 
-          Name = "Seasonic Focus GX-850, 850W 80+ Gold", 
-          Description = "The Seasonic Focus GX-850 provides 850W of clean and stable power with 80 PLUS Gold efficiency. " +
-                        "It's fully modular, ensuring easy cable management and reduced clutter. It features a 10-year " +
-                        "warranty and premium hybrid fan control for silent operation.",
-          Price = 140_00M, 
+          Id = 11, 
+          Category = "Basketball Products", 
+          Name = "Wilson Evolution Basketball", 
+          Description = "High-quality composite leather, soft feel and grip.",
+          Price = 64_99M, 
+          QuantityAvailable = 20, 
+          StoreId = 2,
+          ImageUrl = "wilson_evolution.jpg",
+          DateAdded = new DateTime(2025, 2, 24)
+      },
+      new Product
+      {
+          Id = 12, 
+          Category = "Basketball Products", 
+          Name = "Jordan Jumpman Basketball Shoes", 
+          Description = "Iconic design with superior traction and support.",
+          Price = 120_00M, 
+          QuantityAvailable = 10, 
+          StoreId = 2,
+          ImageUrl = "jordan_jumpman_shoes.jpg",
+          DateAdded = new DateTime(2025, 3, 1)
+      },
+      new Product
+      {
+          Id = 13, 
+          Category = "Basketball Products", 
+          Name = "Adidas Shooting Sleeve", 
+          Description = "Compression sleeve for improved circulation and performance.",
+          Price = 18_99M, 
+          QuantityAvailable = 25, 
+          StoreId = 2,
+          ImageUrl = "adidas_shooting_sleeve.jpg",
+          DateAdded = new DateTime(2025, 3, 2)
+      },
+      new Product
+      {
+          Id = 14, 
+          Category = "Basketball Products", 
+          Name = "Under Armour Basketball Socks", 
+          Description = "Moisture-wicking and cushioned for comfort.",
+          Price = 14_99M, 
+          QuantityAvailable = 40, 
+          StoreId = 2,
+          ImageUrl = "ua_basketball_socks.jpg",
+          DateAdded = new DateTime(2025, 3, 3)
+      },
+      new Product
+      {
+          Id = 15, 
+          Category = "Basketball Products", 
+          Name = "Basketball Hoop with Stand", 
+          Description = "Adjustable height, weather-resistant material.",
+          Price = 199_99M, 
+          QuantityAvailable = 5, 
+          StoreId = 2,
+          ImageUrl = "basketball_hoop.jpg",
+          DateAdded = new DateTime(2025, 3, 4)
+      },
+      new Product
+      {
+          Id = 16, 
+          Category = "Basketball Products", 
+          Name = "Molten Official Game Ball", 
+          Description = "Used in official FIBA games, premium feel.",
+          Price = 89_99M, 
           QuantityAvailable = 12, 
-          StoreId = 1,
-          imageUrl = "https://www.cybertek.fr/images_produits/6674c605-41e1-4aa3-b679-3b1b7446a850.jpg"
+          StoreId = 2,
+          ImageUrl = "molten_game_ball.jpg",
+          DateAdded = new DateTime(2025, 3, 5)
       },
       new Product
       {
-          Id = 7, 
-          Category = "Cooling", 
-          Name = "Noctua NH-D15 Chromax.Black", 
-          Description = "The Noctua NH-D15 Chromax.Black is a premium dual-tower CPU cooler known for its outstanding " +
-                        "cooling performance and quiet operation. It features six heat pipes, two NF-A15 140mm fans, " +
-                        "and a sleek all-black design.",
-          Price = 100_00M, 
-          QuantityAvailable = 18, 
-          StoreId = 1,
-          imageUrl = "https://d.scdn.gr/images/sku_images/037632/37632247/20210121164405_b9029b13.jpeg"
+          Id = 17,
+          Category = "Fitness Equipment",
+          Name = "Bowflex SelectTech 552 Adjustable Dumbbells",
+          Description = "Pair of adjustable dumbbells with weight range from 5 to 52.5 lbs.",
+          Price = 349_99M,
+          QuantityAvailable = 10,
+          StoreId = 3,
+          ImageUrl = "bowflex_selecttech.jpg",
+          DateAdded = new DateTime(2025, 3, 6)
       },
       new Product
       {
-          Id = 8, 
-          Category = "Cases", 
-          Name = "Lian Li PC-O11 Dynamic", 
-          Description = "The Lian Li PC-O11 Dynamic is a premium mid-tower case designed for performance and aesthetics. " +
-                        "It features a tempered glass front and side panel, support for multiple radiators, and excellent " +
-                        "cable management options.",
-          Price = 130_00M, 
-          QuantityAvailable = 22, 
-          StoreId = 1,
-          imageUrl = "https://www.profesionalreview.com/wp-content/uploads/2018/04/Lian-Li-PC-O11-Dynamic-un-chasis-con-mucho-cristal-1.jpg"
+          Id = 18,
+          Category = "Fitness Equipment",
+          Name = "Peloton Bike+",
+          Description = "High-end stationary bike with live and on-demand classes.",
+          Price = 2495_00M,
+          QuantityAvailable = 5,
+          StoreId = 3,
+          ImageUrl = "peloton_bike.jpg",
+          DateAdded = new DateTime(2025, 3, 7)
+      },
+      new Product
+      {
+          Id = 19,
+          Category = "Fitness Equipment",
+          Name = "TRX Suspension Trainer",
+          Description = "Portable, full-body workout system using suspension straps.",
+          Price = 199_99M,
+          QuantityAvailable = 15,
+          StoreId = 3,
+          ImageUrl = "trx_trainer.jpg",
+          DateAdded = new DateTime(2025, 3, 8)
+      },
+      new Product
+      {
+          Id = 20,
+          Category = "Fitness Equipment",
+          Name = "NordicTrack Commercial 1750 Treadmill",
+          Description = "High-end treadmill with incline and interactive training.",
+          Price = 2299_99M,
+          QuantityAvailable = 8,
+          StoreId = 3,
+          ImageUrl = "nordictrack_treadmill.jpg",
+          DateAdded = new DateTime(2025, 3, 9)
+      },
+      new Product
+      {
+          Id = 21,
+          Category = "Fitness Equipment",
+          Name = "Theragun Elite Percussion Massager",
+          Description = "Deep tissue muscle treatment with customizable speed settings.",
+          Price = 399_99M,
+          QuantityAvailable = 12,
+          StoreId = 3,
+          ImageUrl = "theragun_elite.jpg",
+          DateAdded = new DateTime(2025, 3, 10)
+      },
+      new Product
+      {
+          Id = 22,
+          Category = "Fitness Equipment",
+          Name = "Fitbit Charge 6",
+          Description = "Advanced fitness tracker with heart rate monitoring and GPS.",
+          Price = 149_99M,
+          QuantityAvailable = 20,
+          StoreId = 3,
+          ImageUrl = "fitbit_charge6.jpg",
+          DateAdded = new DateTime(2025, 3, 11)
+      },
+      new Product
+      {
+          Id = 23,
+          Category = "Fitness Equipment",
+          Name = "Rogue Echo Bike",
+          Description = "Heavy-duty air bike with reinforced steel construction.",
+          Price = 795_00M,
+          QuantityAvailable = 7,
+          StoreId = 3,
+          ImageUrl = "rogue_echo_bike.jpg",
+          DateAdded = new DateTime(2025, 3, 12)
+      },
+      new Product
+      {
+          Id = 24,
+          Category = "Fitness Equipment",
+          Name = "Hyperice Hypervolt Go 2",
+          Description = "Lightweight percussion massage gun for muscle recovery.",
+          Price = 129_99M,
+          QuantityAvailable = 18,
+          StoreId = 3,
+          ImageUrl = "hypervolt_go2.jpg",
+          DateAdded = new DateTime(2025, 3, 13)
       }
     });
     

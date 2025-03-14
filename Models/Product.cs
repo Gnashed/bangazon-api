@@ -18,7 +18,8 @@ public class Product
   public int QuantityAvailable { get; set; }
   public int StoreId { get; set; } // FK
   public Store Store { get; set; }
-  public string imageUrl { get; set; }
+  public string ImageUrl { get; set; }
+  public DateTime DateAdded { get; set; }
   // Remember that EF Core can infer that StoreId is a foreign key to Store. It will create
   // a foreign key constraint on this column when it creates the DB.
 }
