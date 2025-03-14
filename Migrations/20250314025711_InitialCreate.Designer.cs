@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(BangazonDbContext))]
-    [Migration("20250314000918_imageUrlMigrations")]
-    partial class imageUrlMigrations
+    [Migration("20250314025711_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -136,7 +136,7 @@ namespace Bangazon.Migrations
                             Id = 1,
                             CustomerId = 1,
                             IsCompleted = true,
-                            OrderDate = new DateTime(2025, 3, 13, 19, 9, 17, 876, DateTimeKind.Local).AddTicks(4080),
+                            OrderDate = new DateTime(2025, 3, 13, 21, 57, 11, 520, DateTimeKind.Local).AddTicks(520),
                             OrderTotal = 25000m,
                             PaymentMethodId = 1
                         });
@@ -223,7 +223,14 @@ namespace Bangazon.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -243,10 +250,6 @@ namespace Bangazon.Migrations
                     b.Property<int>("StoreId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("imageUrl")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("SellerId");
@@ -260,89 +263,241 @@ namespace Bangazon.Migrations
                         {
                             Id = 1,
                             Category = "Graphics Cards",
-                            Description = "The EVGA GeForce RTX 3060 12GB provides players with the ability to vanquish 1080p and 1440p gaming, while providing a quality NVIDIA RTX experience and a myriad of productivity benefits. The card is powered by NVIDIA Ampere architecture, which doubles down on ray tracing and AI performance with enhanced RT cores, Tensor Cores, and new streaming multiprocessors. With 12GB of GDDR6 memory, high-end performance does not have to be sacrificed to find a card for gaming and everyday use.",
+                            DateAdded = new DateTime(2025, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The EVGA GeForce RTX 3060 12GB provides players with the ability to vanquish 1080p and 1440p gaming...",
+                            ImageUrl = "https://i.pinimg.com/originals/8c/4a/a4/8c4aa4434669caabab3ef0e0fea4958d.jpg",
                             Name = "EVGA GeForce RTX 3060 XC 12GB",
                             Price = 25000m,
                             QuantityAvailable = 25,
-                            StoreId = 1,
-                            imageUrl = "https://i.pinimg.com/originals/8c/4a/a4/8c4aa4434669caabab3ef0e0fea4958d.jpg"
+                            StoreId = 1
                         },
                         new
                         {
                             Id = 2,
                             Category = "Processors",
-                            Description = "The AMD Ryzen 7 5800X is built on the Zen 3 architecture, offering 8 cores and 16 threads. With a base clock of 3.8 GHz and a max boost clock of 4.7 GHz, it's perfect for gaming, streaming, and content creation. The 5800X supports PCIe 4.0 and features an unlocked multiplier for overclocking enthusiasts.",
+                            DateAdded = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The AMD Ryzen 7 5800X is built on the Zen 3 architecture, offering 8 cores and 16 threads...",
+                            ImageUrl = "https://www.techinn.com/f/13795/137954422/amd-ryzen-7-5800x-3.8ghz.jpg",
                             Name = "AMD Ryzen 7 5800X",
                             Price = 35000m,
                             QuantityAvailable = 15,
-                            StoreId = 1,
-                            imageUrl = "https://www.techinn.com/f/13795/137954422/amd-ryzen-7-5800x-3.8ghz.jpg"
+                            StoreId = 1
                         },
                         new
                         {
                             Id = 3,
                             Category = "Motherboards",
-                            Description = "The ASUS ROG Strix B550-F Gaming motherboard is designed for AMD Ryzen processors and features PCIe 4.0 support, robust power delivery, and AI noise-canceling technology. It includes multiple M.2 slots, WiFi 6, and a high-performance VRM cooling solution for enhanced overclocking capabilities.",
+                            DateAdded = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The ASUS ROG Strix B550-F Gaming motherboard is designed for AMD Ryzen processors...",
+                            ImageUrl = "https://images.anandtech.com/doci/15868/ROG-STRIX-B550-F-GAMING-WI-FI-What_s-inside-the-Box.jpg",
                             Name = "ASUS ROG Strix B550-F Gaming",
                             Price = 18000m,
                             QuantityAvailable = 10,
-                            StoreId = 1,
-                            imageUrl = "https://images.anandtech.com/doci/15868/ROG-STRIX-B550-F-GAMING-WI-FI-What_s-inside-the-Box.jpg"
+                            StoreId = 1
                         },
                         new
                         {
                             Id = 4,
                             Category = "Memory",
-                            Description = "Corsair Vengeance RGB Pro series DDR4 memory is designed for high-performance overclocking. It features dynamic multi-zone RGB lighting and is optimized for Intel and AMD platforms. The memory is built with a custom PCB and tightly screened memory chips to ensure excellent performance and stability.",
-                            Name = "Corsair Vengeance RGB Pro 32GB (2 x 16GB) DDR4-3600",
+                            DateAdded = new DateTime(2025, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Corsair Vengeance RGB Pro series DDR4 memory is designed for high-performance overclocking...",
+                            ImageUrl = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6449/6449223_sd.jpg",
+                            Name = "Corsair Vengeance RGB Pro 32GB",
                             Price = 15000m,
                             QuantityAvailable = 20,
-                            StoreId = 1,
-                            imageUrl = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6449/6449223_sd.jpg"
+                            StoreId = 1
                         },
                         new
                         {
                             Id = 5,
-                            Category = "Storage",
-                            Description = "The Samsung 970 EVO Plus 1TB NVMe SSD delivers top-tier performance with read speeds up to 3,500 MB/s and write speeds up to 3,300 MB/s. Powered by Samsung's V-NAND technology, it ensures reliability and durability for demanding workloads and gaming.",
-                            Name = "Samsung 970 EVO Plus 1TB NVMe SSD",
-                            Price = 12000m,
-                            QuantityAvailable = 30,
-                            StoreId = 1,
-                            imageUrl = "https://media.gamestop.com/i/gamestop/11165893_ALT03/Samsung-970-EVO-Plus-1TB-PCIe-3.0-NVMe-M.2-Internal-V-NAND-Solid-State-Drive?fmt=auto"
+                            Category = "Basketball Products",
+                            DateAdded = new DateTime(2025, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Official size and weight, indoor/outdoor use.",
+                            ImageUrl = "spalding_nba_ball.jpg",
+                            Name = "Spalding NBA Basketball",
+                            Price = 2999m,
+                            QuantityAvailable = 15,
+                            StoreId = 2
                         },
                         new
                         {
                             Id = 6,
-                            Category = "Power Supplies",
-                            Description = "The Seasonic Focus GX-850 provides 850W of clean and stable power with 80 PLUS Gold efficiency. It's fully modular, ensuring easy cable management and reduced clutter. It features a 10-year warranty and premium hybrid fan control for silent operation.",
-                            Name = "Seasonic Focus GX-850, 850W 80+ Gold",
-                            Price = 14000m,
-                            QuantityAvailable = 12,
-                            StoreId = 1,
-                            imageUrl = "https://www.cybertek.fr/images_produits/6674c605-41e1-4aa3-b679-3b1b7446a850.jpg"
+                            Category = "Basketball Products",
+                            DateAdded = new DateTime(2025, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Lightweight and breathable, with Dri-FIT technology.",
+                            ImageUrl = "nike_elite_shorts.jpg",
+                            Name = "Nike Elite Basketball Shorts",
+                            Price = 4500m,
+                            QuantityAvailable = 30,
+                            StoreId = 2
                         },
                         new
                         {
                             Id = 7,
-                            Category = "Cooling",
-                            Description = "The Noctua NH-D15 Chromax.Black is a premium dual-tower CPU cooler known for its outstanding cooling performance and quiet operation. It features six heat pipes, two NF-A15 140mm fans, and a sleek all-black design.",
-                            Name = "Noctua NH-D15 Chromax.Black",
-                            Price = 10000m,
-                            QuantityAvailable = 18,
-                            StoreId = 1,
-                            imageUrl = "https://d.scdn.gr/images/sku_images/037632/37632247/20210121164405_b9029b13.jpeg"
+                            Category = "Basketball Products",
+                            DateAdded = new DateTime(2025, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "High-quality composite leather, soft feel and grip.",
+                            ImageUrl = "wilson_evolution.jpg",
+                            Name = "Wilson Evolution Basketball",
+                            Price = 6499m,
+                            QuantityAvailable = 20,
+                            StoreId = 2
                         },
                         new
                         {
                             Id = 8,
-                            Category = "Cases",
-                            Description = "The Lian Li PC-O11 Dynamic is a premium mid-tower case designed for performance and aesthetics. It features a tempered glass front and side panel, support for multiple radiators, and excellent cable management options.",
-                            Name = "Lian Li PC-O11 Dynamic",
-                            Price = 13000m,
-                            QuantityAvailable = 22,
-                            StoreId = 1,
-                            imageUrl = "https://www.profesionalreview.com/wp-content/uploads/2018/04/Lian-Li-PC-O11-Dynamic-un-chasis-con-mucho-cristal-1.jpg"
+                            Category = "Basketball Products",
+                            DateAdded = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Iconic design with superior traction and support.",
+                            ImageUrl = "jordan_jumpman_shoes.jpg",
+                            Name = "Jordan Jumpman Basketball Shoes",
+                            Price = 12000m,
+                            QuantityAvailable = 10,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Category = "Basketball Products",
+                            DateAdded = new DateTime(2025, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Compression sleeve for improved circulation and performance.",
+                            ImageUrl = "adidas_shooting_sleeve.jpg",
+                            Name = "Adidas Shooting Sleeve",
+                            Price = 1899m,
+                            QuantityAvailable = 25,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Category = "Basketball Products",
+                            DateAdded = new DateTime(2025, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Moisture-wicking and cushioned for comfort.",
+                            ImageUrl = "ua_basketball_socks.jpg",
+                            Name = "Under Armour Basketball Socks",
+                            Price = 1499m,
+                            QuantityAvailable = 40,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Category = "Basketball Products",
+                            DateAdded = new DateTime(2025, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Adjustable height, weather-resistant material.",
+                            ImageUrl = "basketball_hoop.jpg",
+                            Name = "Basketball Hoop with Stand",
+                            Price = 19999m,
+                            QuantityAvailable = 5,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Category = "Basketball Products",
+                            DateAdded = new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Used in official FIBA games, premium feel.",
+                            ImageUrl = "molten_game_ball.jpg",
+                            Name = "Molten Official Game Ball",
+                            Price = 8999m,
+                            QuantityAvailable = 12,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Category = "Fitness Equipment",
+                            DateAdded = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Pair of adjustable dumbbells with weight range from 5 to 52.5 lbs.",
+                            ImageUrl = "bowflex_selecttech.jpg",
+                            Name = "Bowflex SelectTech 552 Adjustable Dumbbells",
+                            Price = 34999m,
+                            QuantityAvailable = 10,
+                            StoreId = 3
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Category = "Fitness Equipment",
+                            DateAdded = new DateTime(2025, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "High-end stationary bike with live and on-demand classes.",
+                            ImageUrl = "peloton_bike.jpg",
+                            Name = "Peloton Bike+",
+                            Price = 249500m,
+                            QuantityAvailable = 5,
+                            StoreId = 3
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Category = "Fitness Equipment",
+                            DateAdded = new DateTime(2025, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Portable, full-body workout system using suspension straps.",
+                            ImageUrl = "trx_trainer.jpg",
+                            Name = "TRX Suspension Trainer",
+                            Price = 19999m,
+                            QuantityAvailable = 15,
+                            StoreId = 3
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Category = "Fitness Equipment",
+                            DateAdded = new DateTime(2025, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "High-end treadmill with incline and interactive training.",
+                            ImageUrl = "nordictrack_treadmill.jpg",
+                            Name = "NordicTrack Commercial 1750 Treadmill",
+                            Price = 229999m,
+                            QuantityAvailable = 8,
+                            StoreId = 3
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Category = "Fitness Equipment",
+                            DateAdded = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Deep tissue muscle treatment with customizable speed settings.",
+                            ImageUrl = "theragun_elite.jpg",
+                            Name = "Theragun Elite Percussion Massager",
+                            Price = 39999m,
+                            QuantityAvailable = 12,
+                            StoreId = 3
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Category = "Fitness Equipment",
+                            DateAdded = new DateTime(2025, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Advanced fitness tracker with heart rate monitoring and GPS.",
+                            ImageUrl = "fitbit_charge6.jpg",
+                            Name = "Fitbit Charge 6",
+                            Price = 14999m,
+                            QuantityAvailable = 20,
+                            StoreId = 3
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Category = "Fitness Equipment",
+                            DateAdded = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Heavy-duty air bike with reinforced steel construction.",
+                            ImageUrl = "rogue_echo_bike.jpg",
+                            Name = "Rogue Echo Bike",
+                            Price = 79500m,
+                            QuantityAvailable = 7,
+                            StoreId = 3
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Category = "Fitness Equipment",
+                            DateAdded = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Lightweight percussion massage gun for muscle recovery.",
+                            ImageUrl = "hypervolt_go2.jpg",
+                            Name = "Hyperice Hypervolt Go 2",
+                            Price = 12999m,
+                            QuantityAvailable = 18,
+                            StoreId = 3
                         });
                 });
 
@@ -374,9 +529,23 @@ namespace Bangazon.Migrations
                         new
                         {
                             Id = 1,
-                            StoreId = 999,
+                            StoreId = 1,
+                            UserId = 2,
+                            Username = "TionB"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            StoreId = 1,
+                            UserId = 1,
+                            Username = "Rob90"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            StoreId = 1,
                             UserId = 3,
-                            Username = "Admin_SWE"
+                            Username = "BeachVibes98"
                         });
                 });
 
@@ -405,8 +574,26 @@ namespace Bangazon.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Admin Store",
+                            Name = "PC Parts",
                             SellerId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Sports Products",
+                            SellerId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Fitness Equipment",
+                            SellerId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Update me",
+                            SellerId = 3
                         });
                 });
 
@@ -440,7 +627,7 @@ namespace Bangazon.Migrations
                         {
                             Id = 2,
                             IsSeller = false,
-                            Uid = "change-me"
+                            Uid = "eBBiuMs6zCYuRFk5657mXQBemjh1"
                         },
                         new
                         {

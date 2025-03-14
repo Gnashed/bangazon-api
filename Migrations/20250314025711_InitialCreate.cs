@@ -134,6 +134,8 @@ namespace Bangazon.Migrations
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
                     QuantityAvailable = table.Column<int>(type: "integer", nullable: false),
                     StoreId = table.Column<int>(type: "integer", nullable: false),
+                    ImageUrl = table.Column<string>(type: "text", nullable: false),
+                    DateAdded = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     SellerId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -219,7 +221,7 @@ namespace Bangazon.Migrations
                 values: new object[,]
                 {
                     { 1, false, "zmwuMjpI5RXABj6mImfK2O586Qf1" },
-                    { 2, false, "change-me" },
+                    { 2, false, "eBBiuMs6zCYuRFk5657mXQBemjh1" },
                     { 3, true, "change-me-2" }
                 });
 
@@ -235,7 +237,12 @@ namespace Bangazon.Migrations
             migrationBuilder.InsertData(
                 table: "Sellers",
                 columns: new[] { "Id", "StoreId", "UserId", "Username" },
-                values: new object[] { 1, 999, 3, "Admin_SWE" });
+                values: new object[,]
+                {
+                    { 1, 1, 2, "TionB" },
+                    { 2, 1, 1, "Rob90" },
+                    { 3, 1, 3, "BeachVibes98" }
+                });
 
             migrationBuilder.InsertData(
                 table: "PaymentMethods",
@@ -245,17 +252,45 @@ namespace Bangazon.Migrations
             migrationBuilder.InsertData(
                 table: "Stores",
                 columns: new[] { "Id", "Name", "SellerId" },
-                values: new object[] { 1, "Admin Store", 1 });
+                values: new object[,]
+                {
+                    { 1, "PC Parts", 1 },
+                    { 2, "Sports Products", 1 },
+                    { 3, "Fitness Equipment", 1 },
+                    { 4, "Update me", 3 }
+                });
 
             migrationBuilder.InsertData(
                 table: "Orders",
                 columns: new[] { "Id", "CustomerId", "IsCompleted", "OrderDate", "OrderTotal", "PaymentMethodId", "SellerId" },
-                values: new object[] { 1, 1, true, new DateTime(2025, 3, 4, 20, 10, 53, 700, DateTimeKind.Local), 25000m, 1, null });
+                values: new object[] { 1, 1, true, new DateTime(2025, 3, 13, 21, 57, 11, 520, DateTimeKind.Local).AddTicks(520), 25000m, 1, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Category", "Description", "Name", "Price", "QuantityAvailable", "SellerId", "StoreId" },
-                values: new object[] { 1, "Graphics Cards", "The EVGA GeForce RTX 3060 12GB provides players with the ability to vanquish 1080p and 1440p gaming, while providing a quality NVIDIA RTX experience and a myriad of productivity benefits. The card is powered by NVIDIA Ampere architecture, which doubles down on ray tracing and AI performance with enhanced RT cores, Tensor Cores, and new streaming multiprocessors. With 12GB of GDDR6 memory, high-end performance does not have to be sacrificed to find a card for gaming and everyday use.", "EVGA GeForce RTX 3060 XC 12GB", 25000m, 25, null, 1 });
+                columns: new[] { "Id", "Category", "DateAdded", "Description", "ImageUrl", "Name", "Price", "QuantityAvailable", "SellerId", "StoreId" },
+                values: new object[,]
+                {
+                    { 1, "Graphics Cards", new DateTime(2025, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "The EVGA GeForce RTX 3060 12GB provides players with the ability to vanquish 1080p and 1440p gaming...", "https://i.pinimg.com/originals/8c/4a/a4/8c4aa4434669caabab3ef0e0fea4958d.jpg", "EVGA GeForce RTX 3060 XC 12GB", 25000m, 25, null, 1 },
+                    { 2, "Processors", new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "The AMD Ryzen 7 5800X is built on the Zen 3 architecture, offering 8 cores and 16 threads...", "https://www.techinn.com/f/13795/137954422/amd-ryzen-7-5800x-3.8ghz.jpg", "AMD Ryzen 7 5800X", 35000m, 15, null, 1 },
+                    { 3, "Motherboards", new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "The ASUS ROG Strix B550-F Gaming motherboard is designed for AMD Ryzen processors...", "https://images.anandtech.com/doci/15868/ROG-STRIX-B550-F-GAMING-WI-FI-What_s-inside-the-Box.jpg", "ASUS ROG Strix B550-F Gaming", 18000m, 10, null, 1 },
+                    { 4, "Memory", new DateTime(2025, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Corsair Vengeance RGB Pro series DDR4 memory is designed for high-performance overclocking...", "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6449/6449223_sd.jpg", "Corsair Vengeance RGB Pro 32GB", 15000m, 20, null, 1 },
+                    { 5, "Basketball Products", new DateTime(2025, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Official size and weight, indoor/outdoor use.", "spalding_nba_ball.jpg", "Spalding NBA Basketball", 2999m, 15, null, 2 },
+                    { 6, "Basketball Products", new DateTime(2025, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lightweight and breathable, with Dri-FIT technology.", "nike_elite_shorts.jpg", "Nike Elite Basketball Shorts", 4500m, 30, null, 2 },
+                    { 7, "Basketball Products", new DateTime(2025, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "High-quality composite leather, soft feel and grip.", "wilson_evolution.jpg", "Wilson Evolution Basketball", 6499m, 20, null, 2 },
+                    { 8, "Basketball Products", new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Iconic design with superior traction and support.", "jordan_jumpman_shoes.jpg", "Jordan Jumpman Basketball Shoes", 12000m, 10, null, 2 },
+                    { 9, "Basketball Products", new DateTime(2025, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "Compression sleeve for improved circulation and performance.", "adidas_shooting_sleeve.jpg", "Adidas Shooting Sleeve", 1899m, 25, null, 2 },
+                    { 10, "Basketball Products", new DateTime(2025, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Moisture-wicking and cushioned for comfort.", "ua_basketball_socks.jpg", "Under Armour Basketball Socks", 1499m, 40, null, 2 },
+                    { 11, "Basketball Products", new DateTime(2025, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "Adjustable height, weather-resistant material.", "basketball_hoop.jpg", "Basketball Hoop with Stand", 19999m, 5, null, 2 },
+                    { 12, "Basketball Products", new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Used in official FIBA games, premium feel.", "molten_game_ball.jpg", "Molten Official Game Ball", 8999m, 12, null, 2 },
+                    { 13, "Fitness Equipment", new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pair of adjustable dumbbells with weight range from 5 to 52.5 lbs.", "bowflex_selecttech.jpg", "Bowflex SelectTech 552 Adjustable Dumbbells", 34999m, 10, null, 3 },
+                    { 14, "Fitness Equipment", new DateTime(2025, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "High-end stationary bike with live and on-demand classes.", "peloton_bike.jpg", "Peloton Bike+", 249500m, 5, null, 3 },
+                    { 15, "Fitness Equipment", new DateTime(2025, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Portable, full-body workout system using suspension straps.", "trx_trainer.jpg", "TRX Suspension Trainer", 19999m, 15, null, 3 },
+                    { 16, "Fitness Equipment", new DateTime(2025, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "High-end treadmill with incline and interactive training.", "nordictrack_treadmill.jpg", "NordicTrack Commercial 1750 Treadmill", 229999m, 8, null, 3 },
+                    { 17, "Fitness Equipment", new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Deep tissue muscle treatment with customizable speed settings.", "theragun_elite.jpg", "Theragun Elite Percussion Massager", 39999m, 12, null, 3 },
+                    { 18, "Fitness Equipment", new DateTime(2025, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Advanced fitness tracker with heart rate monitoring and GPS.", "fitbit_charge6.jpg", "Fitbit Charge 6", 14999m, 20, null, 3 },
+                    { 19, "Fitness Equipment", new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Heavy-duty air bike with reinforced steel construction.", "rogue_echo_bike.jpg", "Rogue Echo Bike", 79500m, 7, null, 3 },
+                    { 20, "Fitness Equipment", new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lightweight percussion massage gun for muscle recovery.", "hypervolt_go2.jpg", "Hyperice Hypervolt Go 2", 12999m, 18, null, 3 }
+                });
 
             migrationBuilder.InsertData(
                 table: "OrderItems",

@@ -30,7 +30,7 @@ public class BangazonDbContext : DbContext
     modelBuilder.Entity<User>().HasData(new User[]
     {
       new User {Id = 1, Uid = "zmwuMjpI5RXABj6mImfK2O586Qf1", IsSeller = false}, // Uid is auth'd using email+password combo.
-      new User {Id = 2, Uid = "change-me", IsSeller = false},
+      new User {Id = 2, Uid = "eBBiuMs6zCYuRFk5657mXQBemjh1", IsSeller = false},
       new User {Id = 3, Uid = "change-me-2", IsSeller = true},
     });
     
@@ -62,12 +62,17 @@ public class BangazonDbContext : DbContext
     
     modelBuilder.Entity<Seller>().HasData(new Seller[]
     {
-      new Seller { Id = 1, StoreId = 999, Username = "Admin_SWE", UserId = 3 },
+      new Seller { Id = 1, StoreId = 1, Username = "TionB", UserId = 2 },
+      new Seller { Id = 2, StoreId = 1, Username = "Rob90", UserId = 1 },
+      new Seller { Id = 3, StoreId = 1, Username = "BeachVibes98", UserId = 3 },
     });
     
     modelBuilder.Entity<Store>().HasData(new Store[]
     {
-      new Store { Id = 1, Name = "Admin Store", SellerId = 1},
+      new Store { Id = 1, Name = "PC Parts", SellerId = 1},
+      new Store { Id = 2, Name = "Sports Products", SellerId = 1},
+      new Store { Id = 3, Name = "Fitness Equipment", SellerId = 1},
+      new Store { Id = 4, Name = "Update me", SellerId = 3},
     });
     
     modelBuilder.Entity<Product>().HasData(new Product[]

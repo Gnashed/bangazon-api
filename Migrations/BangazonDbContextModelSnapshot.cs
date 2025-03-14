@@ -133,7 +133,7 @@ namespace Bangazon.Migrations
                             Id = 1,
                             CustomerId = 1,
                             IsCompleted = true,
-                            OrderDate = new DateTime(2025, 3, 13, 21, 13, 4, 578, DateTimeKind.Local).AddTicks(2300),
+                            OrderDate = new DateTime(2025, 3, 13, 21, 57, 11, 520, DateTimeKind.Local).AddTicks(520),
                             OrderTotal = 25000m,
                             PaymentMethodId = 1
                         });
@@ -306,7 +306,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 5,
                             Category = "Basketball Products",
                             DateAdded = new DateTime(2025, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Official size and weight, indoor/outdoor use.",
@@ -318,7 +318,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 6,
                             Category = "Basketball Products",
                             DateAdded = new DateTime(2025, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Lightweight and breathable, with Dri-FIT technology.",
@@ -330,7 +330,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 11,
+                            Id = 7,
                             Category = "Basketball Products",
                             DateAdded = new DateTime(2025, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "High-quality composite leather, soft feel and grip.",
@@ -342,7 +342,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 12,
+                            Id = 8,
                             Category = "Basketball Products",
                             DateAdded = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Iconic design with superior traction and support.",
@@ -354,7 +354,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 13,
+                            Id = 9,
                             Category = "Basketball Products",
                             DateAdded = new DateTime(2025, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Compression sleeve for improved circulation and performance.",
@@ -366,7 +366,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 14,
+                            Id = 10,
                             Category = "Basketball Products",
                             DateAdded = new DateTime(2025, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Moisture-wicking and cushioned for comfort.",
@@ -378,7 +378,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 15,
+                            Id = 11,
                             Category = "Basketball Products",
                             DateAdded = new DateTime(2025, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Adjustable height, weather-resistant material.",
@@ -390,7 +390,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 16,
+                            Id = 12,
                             Category = "Basketball Products",
                             DateAdded = new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Used in official FIBA games, premium feel.",
@@ -402,7 +402,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 17,
+                            Id = 13,
                             Category = "Fitness Equipment",
                             DateAdded = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Pair of adjustable dumbbells with weight range from 5 to 52.5 lbs.",
@@ -414,7 +414,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 18,
+                            Id = 14,
                             Category = "Fitness Equipment",
                             DateAdded = new DateTime(2025, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "High-end stationary bike with live and on-demand classes.",
@@ -426,7 +426,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 19,
+                            Id = 15,
                             Category = "Fitness Equipment",
                             DateAdded = new DateTime(2025, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Portable, full-body workout system using suspension straps.",
@@ -438,7 +438,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 20,
+                            Id = 16,
                             Category = "Fitness Equipment",
                             DateAdded = new DateTime(2025, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "High-end treadmill with incline and interactive training.",
@@ -450,7 +450,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 21,
+                            Id = 17,
                             Category = "Fitness Equipment",
                             DateAdded = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Deep tissue muscle treatment with customizable speed settings.",
@@ -462,7 +462,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 22,
+                            Id = 18,
                             Category = "Fitness Equipment",
                             DateAdded = new DateTime(2025, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Advanced fitness tracker with heart rate monitoring and GPS.",
@@ -474,7 +474,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 23,
+                            Id = 19,
                             Category = "Fitness Equipment",
                             DateAdded = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Heavy-duty air bike with reinforced steel construction.",
@@ -486,7 +486,7 @@ namespace Bangazon.Migrations
                         },
                         new
                         {
-                            Id = 24,
+                            Id = 20,
                             Category = "Fitness Equipment",
                             DateAdded = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Lightweight percussion massage gun for muscle recovery.",
@@ -526,9 +526,23 @@ namespace Bangazon.Migrations
                         new
                         {
                             Id = 1,
-                            StoreId = 999,
+                            StoreId = 1,
+                            UserId = 2,
+                            Username = "TionB"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            StoreId = 1,
+                            UserId = 1,
+                            Username = "Rob90"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            StoreId = 1,
                             UserId = 3,
-                            Username = "Admin_SWE"
+                            Username = "BeachVibes98"
                         });
                 });
 
@@ -557,8 +571,26 @@ namespace Bangazon.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Admin Store",
+                            Name = "PC Parts",
                             SellerId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Sports Products",
+                            SellerId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Fitness Equipment",
+                            SellerId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Update me",
+                            SellerId = 3
                         });
                 });
 
@@ -592,7 +624,7 @@ namespace Bangazon.Migrations
                         {
                             Id = 2,
                             IsSeller = false,
-                            Uid = "change-me"
+                            Uid = "eBBiuMs6zCYuRFk5657mXQBemjh1"
                         },
                         new
                         {
