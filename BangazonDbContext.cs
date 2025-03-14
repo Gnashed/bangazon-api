@@ -85,7 +85,8 @@ public class BangazonDbContext : DbContext
                       "for gaming and everyday use.",
         Price = 250_00M , 
         QuantityAvailable = 25, 
-        StoreId = 1
+        StoreId = 1,
+        imageUrl = "https://i.pinimg.com/originals/8c/4a/a4/8c4aa4434669caabab3ef0e0fea4958d.jpg"
       },
       new Product
       {
@@ -98,7 +99,8 @@ public class BangazonDbContext : DbContext
                         "for overclocking enthusiasts.",
           Price = 350_00M, 
           QuantityAvailable = 15, 
-          StoreId = 1
+          StoreId = 1,
+          imageUrl = "https://www.techinn.com/f/13795/137954422/amd-ryzen-7-5800x-3.8ghz.jpg"
       },
       new Product
       {
@@ -111,7 +113,8 @@ public class BangazonDbContext : DbContext
                         "capabilities.",
           Price = 180_00M, 
           QuantityAvailable = 10, 
-          StoreId = 1
+          StoreId = 1,
+          imageUrl = "https://images.anandtech.com/doci/15868/ROG-STRIX-B550-F-GAMING-WI-FI-What_s-inside-the-Box.jpg"
       },
       new Product
       {
@@ -124,7 +127,8 @@ public class BangazonDbContext : DbContext
                         "performance and stability.",
           Price = 150_00M, 
           QuantityAvailable = 20, 
-          StoreId = 1
+          StoreId = 1,
+          imageUrl = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6449/6449223_sd.jpg"
       },
       new Product
       {
@@ -136,7 +140,8 @@ public class BangazonDbContext : DbContext
                         "it ensures reliability and durability for demanding workloads and gaming.",
           Price = 120_00M, 
           QuantityAvailable = 30, 
-          StoreId = 1
+          StoreId = 1,
+          imageUrl = "https://media.gamestop.com/i/gamestop/11165893_ALT03/Samsung-970-EVO-Plus-1TB-PCIe-3.0-NVMe-M.2-Internal-V-NAND-Solid-State-Drive?fmt=auto"
       },
       new Product
       {
@@ -148,7 +153,8 @@ public class BangazonDbContext : DbContext
                         "warranty and premium hybrid fan control for silent operation.",
           Price = 140_00M, 
           QuantityAvailable = 12, 
-          StoreId = 1
+          StoreId = 1,
+          imageUrl = "https://www.cybertek.fr/images_produits/6674c605-41e1-4aa3-b679-3b1b7446a850.jpg"
       },
       new Product
       {
@@ -160,7 +166,8 @@ public class BangazonDbContext : DbContext
                         "and a sleek all-black design.",
           Price = 100_00M, 
           QuantityAvailable = 18, 
-          StoreId = 1
+          StoreId = 1,
+          imageUrl = "https://d.scdn.gr/images/sku_images/037632/37632247/20210121164405_b9029b13.jpeg"
       },
       new Product
       {
@@ -172,7 +179,8 @@ public class BangazonDbContext : DbContext
                         "cable management options.",
           Price = 130_00M, 
           QuantityAvailable = 22, 
-          StoreId = 1
+          StoreId = 1,
+          imageUrl = "https://www.profesionalreview.com/wp-content/uploads/2018/04/Lian-Li-PC-O11-Dynamic-un-chasis-con-mucho-cristal-1.jpg"
       }
     });
     
