@@ -129,12 +129,12 @@ public class BangazonDbContext : DbContext
       {
           Id = 5, 
           Category = "Basketball Products", 
-          Name = "Spalding NBA Basketball", 
+          Name = "Spalding NBA Varsity Basketball (outdoor)", 
           Description = "Official size and weight, indoor/outdoor use.",
           Price = 29_99M, 
           QuantityAvailable = 15, 
           StoreId = 2,
-          ImageUrl = "spalding_nba_ball.jpg",
+          ImageUrl = "https://cdn4.volusion.store/phzup-xttqn/v/vspfiles/photos/63-306E-2.jpg?v-cache=1640967916",
           DateAdded = new DateTime(2025, 2, 25)
       },
       new Product
@@ -146,7 +146,7 @@ public class BangazonDbContext : DbContext
           Price = 45_00M, 
           QuantityAvailable = 30, 
           StoreId = 2,
-          ImageUrl = "nike_elite_shorts.jpg",
+          ImageUrl = "https://i.ebayimg.com/images/g/YlgAAOSw~WpgqyDw/s-l1200.jpg",
           DateAdded = new DateTime(2025, 2, 28)
       },
       new Product
@@ -158,19 +158,19 @@ public class BangazonDbContext : DbContext
           Price = 64_99M, 
           QuantityAvailable = 20, 
           StoreId = 2,
-          ImageUrl = "wilson_evolution.jpg",
+          ImageUrl = "https://i5.walmartimages.com/asr/b624338a-fe3a-4036-92c7-3e5dfc3d41e1_1.660a529a42734dc1008fc53ada274653.jpeg",
           DateAdded = new DateTime(2025, 2, 24)
       },
       new Product
       {
           Id = 8, 
-          Category = "Basketball Products", 
-          Name = "Jordan Jumpman Basketball Shoes", 
+          Category = "Basketball Shoes", 
+          Name = "Air Jordan 13 Retro Basketball Shoes (RED/WHITE)", 
           Description = "Iconic design with superior traction and support.",
           Price = 120_00M, 
           QuantityAvailable = 10, 
           StoreId = 2,
-          ImageUrl = "jordan_jumpman_shoes.jpg",
+          ImageUrl = "https://i.ebayimg.com/00/s/MTI3NlgxMjgw/z/uCMAAOSw0x1k5cIg/$_57.JPG?set_id=8800005007",
           DateAdded = new DateTime(2025, 3, 1)
       },
       new Product
@@ -182,7 +182,7 @@ public class BangazonDbContext : DbContext
           Price = 18_99M, 
           QuantityAvailable = 25, 
           StoreId = 2,
-          ImageUrl = "adidas_shooting_sleeve.jpg",
+          ImageUrl = "https://i.ebayimg.com/images/g/SRIAAOSwRwFfWx36/s-l1200.jpg",
           DateAdded = new DateTime(2025, 3, 2)
       },
       new Product
@@ -194,7 +194,7 @@ public class BangazonDbContext : DbContext
           Price = 14_99M, 
           QuantityAvailable = 40, 
           StoreId = 2,
-          ImageUrl = "ua_basketball_socks.jpg",
+          ImageUrl = "https://www.kicksown.com/cdn/shop/files/20240821172318.jpg",
           DateAdded = new DateTime(2025, 3, 3)
       },
       new Product
@@ -206,7 +206,7 @@ public class BangazonDbContext : DbContext
           Price = 199_99M, 
           QuantityAvailable = 5, 
           StoreId = 2,
-          ImageUrl = "basketball_hoop.jpg",
+          ImageUrl = "https://m.media-amazon.com/images/I/61CKDFncGbL._AC_UF1000,1000_QL80_.jpg",
           DateAdded = new DateTime(2025, 3, 4)
       },
       new Product
@@ -218,7 +218,7 @@ public class BangazonDbContext : DbContext
           Price = 89_99M, 
           QuantityAvailable = 12, 
           StoreId = 2,
-          ImageUrl = "molten_game_ball.jpg",
+          ImageUrl = "https://shop.moltensports.jp/cdn/shop/articles/20210902_01_01.png?v=1644331911",
           DateAdded = new DateTime(2025, 3, 5)
       },
       new Product
@@ -230,7 +230,9 @@ public class BangazonDbContext : DbContext
           Price = 349_99M,
           QuantityAvailable = 10,
           StoreId = 3,
-          ImageUrl = "bowflex_selecttech.jpg",
+          ImageUrl = "https://www.bowflex.com/dw/image/v2/AAYW_PRD/on/demandware.static/-/Sites-nautilus-master-catalo" +
+                     "g/default/dwf21fb1cf/images/bfx/weights/100131/bowflex-selecttech-552-dumbbell-weights-hero.jpg?s" +
+                     "w=2600&sh=1464&sm=fit",
           DateAdded = new DateTime(2025, 3, 6)
       },
       new Product
@@ -242,7 +244,9 @@ public class BangazonDbContext : DbContext
           Price = 2495_00M,
           QuantityAvailable = 5,
           StoreId = 3,
-          ImageUrl = "peloton_bike.jpg",
+          ImageUrl = "https://res.cloudinary.com/peloton-cycle/image/fetch/dpr_2.0,f_auto,q_auto:good,w_768/https://ima" +
+                     "ges.ctfassets.net/7vk8puwnesgc/570NDQUa4nJVo466mxbUuv/f55258ef9420c35a68da5d5f22146184/20_5632" +
+                     "_PELOTON_BIKE_RENDERS_TITAN-ALT_M_BOTH_W1_F_LAYERED_NO_WEIGHTS.jpg",
           DateAdded = new DateTime(2025, 3, 7)
       },
       new Product
@@ -254,7 +258,7 @@ public class BangazonDbContext : DbContext
           Price = 199_99M,
           QuantityAvailable = 15,
           StoreId = 3,
-          ImageUrl = "trx_trainer.jpg",
+          ImageUrl = "https://www.trxtraining.com/cdn/shop/products/21_09_03_Lifestyle_Yoga9924_1_1800x.jpg",
           DateAdded = new DateTime(2025, 3, 8)
       },
       new Product
@@ -266,7 +270,8 @@ public class BangazonDbContext : DbContext
           Price = 2299_99M,
           QuantityAvailable = 8,
           StoreId = 3,
-          ImageUrl = "nordictrack_treadmill.jpg",
+          ImageUrl = "https://images.squarespace-cdn.com/content/v1/5d910d397c5f112386050a97/1683788362652-OHHR47KPE93" +
+                     "R120TDBGJ/4639edfc-62e4-43d9-ba0b-42993121c7a8.png?",
           DateAdded = new DateTime(2025, 3, 9)
       },
       new Product
@@ -278,7 +283,7 @@ public class BangazonDbContext : DbContext
           Price = 399_99M,
           QuantityAvailable = 12,
           StoreId = 3,
-          ImageUrl = "theragun_elite.jpg",
+          ImageUrl = "https://m.media-amazon.com/images/I/61HwDKWhdML.jpg",
           DateAdded = new DateTime(2025, 3, 10)
       },
       new Product
@@ -290,7 +295,7 @@ public class BangazonDbContext : DbContext
           Price = 149_99M,
           QuantityAvailable = 20,
           StoreId = 3,
-          ImageUrl = "fitbit_charge6.jpg",
+          ImageUrl = "https://m.media-amazon.com/images/I/61wn2jfhBkL.jpg",
           DateAdded = new DateTime(2025, 3, 11)
       },
       new Product
@@ -302,7 +307,7 @@ public class BangazonDbContext : DbContext
           Price = 795_00M,
           QuantityAvailable = 7,
           StoreId = 3,
-          ImageUrl = "rogue_echo_bike.jpg",
+          ImageUrl = "https://i0.wp.com/asmanyreviewsaspossible.com/wp-content/uploads/2017/12/echo-bike-slider-5-new.jpg",
           DateAdded = new DateTime(2025, 3, 12)
       },
       new Product
@@ -314,7 +319,7 @@ public class BangazonDbContext : DbContext
           Price = 129_99M,
           QuantityAvailable = 18,
           StoreId = 3,
-          ImageUrl = "hypervolt_go2.jpg",
+          ImageUrl = "https://mygalf.com/uploads/product_image/1669367949Hypervolt2_MainPic.jpeg",
           DateAdded = new DateTime(2025, 3, 13)
       }
     });
