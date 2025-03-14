@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(BangazonDbContext))]
-    partial class BangazonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250314013811_AddedPropertyDateAdded")]
+    partial class AddedPropertyDateAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,7 +136,7 @@ namespace Bangazon.Migrations
                             Id = 1,
                             CustomerId = 1,
                             IsCompleted = true,
-                            OrderDate = new DateTime(2025, 3, 13, 20, 47, 36, 188, DateTimeKind.Local).AddTicks(1970),
+                            OrderDate = new DateTime(2025, 3, 13, 20, 38, 11, 160, DateTimeKind.Local).AddTicks(3630),
                             OrderTotal = 25000m,
                             PaymentMethodId = 1
                         });
@@ -314,7 +317,7 @@ namespace Bangazon.Migrations
                             Name = "Spalding NBA Basketball",
                             Price = 2999m,
                             QuantityAvailable = 15,
-                            StoreId = 1
+                            StoreId = 2
                         },
                         new
                         {
@@ -326,7 +329,7 @@ namespace Bangazon.Migrations
                             Name = "Nike Elite Basketball Shorts",
                             Price = 4500m,
                             QuantityAvailable = 30,
-                            StoreId = 1
+                            StoreId = 2
                         },
                         new
                         {
@@ -338,7 +341,7 @@ namespace Bangazon.Migrations
                             Name = "Wilson Evolution Basketball",
                             Price = 6499m,
                             QuantityAvailable = 20,
-                            StoreId = 1
+                            StoreId = 2
                         },
                         new
                         {
@@ -350,7 +353,7 @@ namespace Bangazon.Migrations
                             Name = "Jordan Jumpman Basketball Shoes",
                             Price = 12000m,
                             QuantityAvailable = 10,
-                            StoreId = 1
+                            StoreId = 2
                         },
                         new
                         {
@@ -362,7 +365,7 @@ namespace Bangazon.Migrations
                             Name = "Adidas Shooting Sleeve",
                             Price = 1899m,
                             QuantityAvailable = 25,
-                            StoreId = 1
+                            StoreId = 2
                         },
                         new
                         {
@@ -374,7 +377,7 @@ namespace Bangazon.Migrations
                             Name = "Under Armour Basketball Socks",
                             Price = 1499m,
                             QuantityAvailable = 40,
-                            StoreId = 1
+                            StoreId = 2
                         },
                         new
                         {
@@ -386,7 +389,7 @@ namespace Bangazon.Migrations
                             Name = "Basketball Hoop with Stand",
                             Price = 19999m,
                             QuantityAvailable = 5,
-                            StoreId = 1
+                            StoreId = 2
                         },
                         new
                         {
@@ -398,7 +401,7 @@ namespace Bangazon.Migrations
                             Name = "Molten Official Game Ball",
                             Price = 8999m,
                             QuantityAvailable = 12,
-                            StoreId = 1
+                            StoreId = 2
                         },
                         new
                         {
@@ -410,7 +413,7 @@ namespace Bangazon.Migrations
                             Name = "Bowflex SelectTech 552 Adjustable Dumbbells",
                             Price = 34999m,
                             QuantityAvailable = 10,
-                            StoreId = 1
+                            StoreId = 3
                         },
                         new
                         {
@@ -422,7 +425,7 @@ namespace Bangazon.Migrations
                             Name = "Peloton Bike+",
                             Price = 249500m,
                             QuantityAvailable = 5,
-                            StoreId = 1
+                            StoreId = 3
                         },
                         new
                         {
@@ -434,7 +437,7 @@ namespace Bangazon.Migrations
                             Name = "TRX Suspension Trainer",
                             Price = 19999m,
                             QuantityAvailable = 15,
-                            StoreId = 1
+                            StoreId = 3
                         },
                         new
                         {
@@ -446,7 +449,7 @@ namespace Bangazon.Migrations
                             Name = "NordicTrack Commercial 1750 Treadmill",
                             Price = 229999m,
                             QuantityAvailable = 8,
-                            StoreId = 1
+                            StoreId = 3
                         },
                         new
                         {
@@ -458,7 +461,7 @@ namespace Bangazon.Migrations
                             Name = "Theragun Elite Percussion Massager",
                             Price = 39999m,
                             QuantityAvailable = 12,
-                            StoreId = 1
+                            StoreId = 3
                         },
                         new
                         {
@@ -470,7 +473,7 @@ namespace Bangazon.Migrations
                             Name = "Fitbit Charge 6",
                             Price = 14999m,
                             QuantityAvailable = 20,
-                            StoreId = 1
+                            StoreId = 3
                         },
                         new
                         {
@@ -482,7 +485,7 @@ namespace Bangazon.Migrations
                             Name = "Rogue Echo Bike",
                             Price = 79500m,
                             QuantityAvailable = 7,
-                            StoreId = 1
+                            StoreId = 3
                         },
                         new
                         {
@@ -494,7 +497,7 @@ namespace Bangazon.Migrations
                             Name = "Hyperice Hypervolt Go 2",
                             Price = 12999m,
                             QuantityAvailable = 18,
-                            StoreId = 1
+                            StoreId = 3
                         });
                 });
 

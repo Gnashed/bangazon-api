@@ -100,6 +100,12 @@ app.MapGet("/api/store/{id}", (BangazonDbContext db, int id) =>
 {
     return db.Stores.Include(s => s.Seller).SingleOrDefault(s => s.Id == id);
 });
+app.MapPost("/api/store", (BangazonDbContext db, Store store) =>
+{
+    db.Stores.Add(store);
+    db.SaveChanges();
+    return Results.Created($"/api/store/{store.Id}", store);
+});
 
 app.MapGet("/api/products", (BangazonDbContext db) => db.Products.ToList());
 
