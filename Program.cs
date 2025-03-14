@@ -108,6 +108,17 @@ app.MapPost("/api/store", (BangazonDbContext db, Store store) =>
 });
 
 app.MapGet("/api/products", (BangazonDbContext db) => db.Products.ToList());
+app.MapGet("/api/products/latest", (BangazonDbContext db) =>
+{
+    return db.Products.AsEnumerable()
+        .OrderBy(p => p.DateAdded).Take(20).Reverse();
+});
+app.MapPost("/api/product", (BangazonDbContext db, Product product) =>
+{
+    db.Products.Add(product);
+    db.SaveChanges();
+    return Results.Created($"/api/product/{product.Id}", product);
+});
 
 app.MapGet("/api/customers", (BangazonDbContext db) => db.Customers.ToList());
 app.MapGet("/api/customer/{id}", (BangazonDbContext db, int id) =>
