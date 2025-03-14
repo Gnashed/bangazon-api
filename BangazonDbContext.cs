@@ -122,7 +122,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 9, 
+          Id = 5, 
           Category = "Basketball Products", 
           Name = "Spalding NBA Basketball", 
           Description = "Official size and weight, indoor/outdoor use.",
@@ -134,7 +134,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 10, 
+          Id = 6, 
           Category = "Basketball Products", 
           Name = "Nike Elite Basketball Shorts", 
           Description = "Lightweight and breathable, with Dri-FIT technology.",
@@ -146,7 +146,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 11, 
+          Id = 7, 
           Category = "Basketball Products", 
           Name = "Wilson Evolution Basketball", 
           Description = "High-quality composite leather, soft feel and grip.",
@@ -158,7 +158,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 12, 
+          Id = 8, 
           Category = "Basketball Products", 
           Name = "Jordan Jumpman Basketball Shoes", 
           Description = "Iconic design with superior traction and support.",
@@ -170,7 +170,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 13, 
+          Id = 9, 
           Category = "Basketball Products", 
           Name = "Adidas Shooting Sleeve", 
           Description = "Compression sleeve for improved circulation and performance.",
@@ -182,7 +182,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 14, 
+          Id = 10, 
           Category = "Basketball Products", 
           Name = "Under Armour Basketball Socks", 
           Description = "Moisture-wicking and cushioned for comfort.",
@@ -194,7 +194,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 15, 
+          Id = 11, 
           Category = "Basketball Products", 
           Name = "Basketball Hoop with Stand", 
           Description = "Adjustable height, weather-resistant material.",
@@ -206,7 +206,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 16, 
+          Id = 12, 
           Category = "Basketball Products", 
           Name = "Molten Official Game Ball", 
           Description = "Used in official FIBA games, premium feel.",
@@ -218,7 +218,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 17,
+          Id = 13,
           Category = "Fitness Equipment",
           Name = "Bowflex SelectTech 552 Adjustable Dumbbells",
           Description = "Pair of adjustable dumbbells with weight range from 5 to 52.5 lbs.",
@@ -230,7 +230,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 18,
+          Id = 14,
           Category = "Fitness Equipment",
           Name = "Peloton Bike+",
           Description = "High-end stationary bike with live and on-demand classes.",
@@ -242,7 +242,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 19,
+          Id = 15,
           Category = "Fitness Equipment",
           Name = "TRX Suspension Trainer",
           Description = "Portable, full-body workout system using suspension straps.",
@@ -254,7 +254,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 20,
+          Id = 16,
           Category = "Fitness Equipment",
           Name = "NordicTrack Commercial 1750 Treadmill",
           Description = "High-end treadmill with incline and interactive training.",
@@ -266,7 +266,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 21,
+          Id = 17,
           Category = "Fitness Equipment",
           Name = "Theragun Elite Percussion Massager",
           Description = "Deep tissue muscle treatment with customizable speed settings.",
@@ -278,7 +278,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 22,
+          Id = 18,
           Category = "Fitness Equipment",
           Name = "Fitbit Charge 6",
           Description = "Advanced fitness tracker with heart rate monitoring and GPS.",
@@ -290,7 +290,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 23,
+          Id = 19,
           Category = "Fitness Equipment",
           Name = "Rogue Echo Bike",
           Description = "Heavy-duty air bike with reinforced steel construction.",
@@ -302,7 +302,7 @@ public class BangazonDbContext : DbContext
       },
       new Product
       {
-          Id = 24,
+          Id = 20,
           Category = "Fitness Equipment",
           Name = "Hyperice Hypervolt Go 2",
           Description = "Lightweight percussion massage gun for muscle recovery.",
