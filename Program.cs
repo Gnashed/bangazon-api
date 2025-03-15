@@ -28,7 +28,11 @@ builder.Services.AddCors(options =>
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });;
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -90,7 +94,10 @@ app.MapDelete("/api/seller/{id}", (BangazonDbContext db, int id) =>
 app.MapGet("/api/sellers", (BangazonDbContext db) =>  db.Sellers.ToList());
 app.MapGet("/api/seller/{id}", (BangazonDbContext db, int id) =>
 {
-    return db.Sellers.SingleOrDefault(u => u.Id == id);
+    return db.Sellers
+        .Include(s => s.Stores)
+        .ThenInclude(s => s.Products)
+        .SingleOrDefault(u => u.Id == id);
 });
 app.MapPost("/api/seller", (BangazonDbContext db, Seller seller) =>
 {
@@ -107,7 +114,9 @@ app.MapGet("/api/stores", (BangazonDbContext db) =>
 });
 app.MapGet("/api/store/{id}", (BangazonDbContext db, int id) =>
 {
-    return db.Stores.Include(s => s.Seller).SingleOrDefault(s => s.Id == id);
+    return db.Stores
+        .Include(s => s.Seller)
+        .SingleOrDefault(s => s.Id == id);
 });
 app.MapPost("/api/store", (BangazonDbContext db, Store store) =>
 {
@@ -267,7 +276,6 @@ app.MapPut("/api/sellers/{id}", (BangazonDbContext db, int id, Seller seller) =>
     {
         return Results.NotFound();
     }
-    sellerToUpdate.StoreId = seller.StoreId;
     sellerToUpdate.Username = seller.Username;
     
     db.SaveChanges();

@@ -59,12 +59,16 @@ public class BangazonDbContext : DbContext
         CustomerId = 1,
       }
     });
-    
+
+    modelBuilder.Entity<Seller>()
+      .HasMany(s => s.Stores)
+      .WithOne(st => st.Seller)
+      .HasForeignKey(st => st.SellerId);
     modelBuilder.Entity<Seller>().HasData(new Seller[]
     {
-      new Seller { Id = 1, StoreId = 1, Username = "TionB", UserId = 2 },
-      new Seller { Id = 2, StoreId = 1, Username = "Rob90", UserId = 1 },
-      new Seller { Id = 3, StoreId = 1, Username = "BeachVibes98", UserId = 3 },
+      new Seller { Id = 1, Username = "TionB", UserId = 2 },
+      new Seller { Id = 2, Username = "Rob90", UserId = 1 },
+      new Seller { Id = 3, Username = "BeachVibes98", UserId = 3 },
     });
     
     modelBuilder.Entity<Store>().HasData(new Store[]
