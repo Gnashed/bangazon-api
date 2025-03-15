@@ -9,4 +9,5 @@ public class Store
   public string Name { get; set; }
   public int SellerId { get; set; } // FK
   public Seller Seller { get; set; }
+  public string StoreImageUrl { get; set; }
 }

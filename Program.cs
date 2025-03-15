@@ -88,6 +88,10 @@ app.MapDelete("/api/seller/{id}", (BangazonDbContext db, int id) =>
 });
 
 app.MapGet("/api/sellers", (BangazonDbContext db) =>  db.Sellers.ToList());
+app.MapGet("/api/seller/{id}", (BangazonDbContext db, int id) =>
+{
+    return db.Sellers.SingleOrDefault(u => u.Id == id);
+});
 app.MapPost("/api/seller", (BangazonDbContext db, Seller seller) =>
 {
     db.Sellers.Add(seller);
@@ -95,7 +99,12 @@ app.MapPost("/api/seller", (BangazonDbContext db, Seller seller) =>
     return Results.Created($"/api/seller/{seller.Id}", seller);
 });
 
-app.MapGet("/api/stores", (BangazonDbContext db) => db.Stores.ToList());
+app.MapGet("/api/stores", (BangazonDbContext db) =>
+{
+    return db.Stores
+        .Include(s => s.Seller)
+        .ToList();
+});
 app.MapGet("/api/store/{id}", (BangazonDbContext db, int id) =>
 {
     return db.Stores.Include(s => s.Seller).SingleOrDefault(s => s.Id == id);

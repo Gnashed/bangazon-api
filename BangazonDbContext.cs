@@ -69,10 +69,10 @@ public class BangazonDbContext : DbContext
     
     modelBuilder.Entity<Store>().HasData(new Store[]
     {
-      new Store { Id = 1, Name = "PC Parts", SellerId = 1},
-      new Store { Id = 2, Name = "Sports Products", SellerId = 1},
-      new Store { Id = 3, Name = "Fitness Equipment", SellerId = 1},
-      new Store { Id = 4, Name = "Update me", SellerId = 3},
+      new Store { Id = 1, Name = "PC Parts", SellerId = 1, StoreImageUrl = "images.unsplash.com/photo-1568209865332-a15790aed756?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
+      new Store { Id = 2, Name = "Sports Products", SellerId = 1, StoreImageUrl = "jhrvt.com/uploads/gallery/658/Photos_Website_Banners(2).jpeg"},
+      new Store { Id = 3, Name = "Fitness Equipment", SellerId = 1, StoreImageUrl = "valorfitness.com/cdn/shop/files/valor-fitness-equipment-retail-store-pinellas_600x600@2x.jpg"},
+      new Store { Id = 4, Name = "Update me", SellerId = 3, StoreImageUrl = ""},
     });
     
     modelBuilder.Entity<Product>().HasData(new Product[]
