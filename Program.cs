@@ -116,6 +116,7 @@ app.MapGet("/api/store/{id}", (BangazonDbContext db, int id) =>
 {
     return db.Stores
         .Include(s => s.Seller)
+        .Include(s => s.Products)
         .SingleOrDefault(s => s.Id == id);
 });
 app.MapPost("/api/store", (BangazonDbContext db, Store store) =>
