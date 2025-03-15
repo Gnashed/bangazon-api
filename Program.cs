@@ -186,7 +186,11 @@ app.MapDelete("/api/product/{id}", (BangazonDbContext db, int id) =>
 app.MapGet("/api/customers", (BangazonDbContext db) => db.Customers.ToList());
 app.MapGet("/api/customer/{id}", (BangazonDbContext db, int id) =>
 {
-    return db.Customers.Include(c => c.User).Single(c => c.Id == id);
+    return db.Customers
+        .Include(c => c.User)
+        .Include(c => c.Orders)
+        .Include(c => c.PaymentMethods)
+        .Single(c => c.Id == id);
 });
 app.MapPost("/api/customer", (BangazonDbContext db, Customer customer) =>
 {
