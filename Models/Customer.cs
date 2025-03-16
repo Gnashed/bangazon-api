@@ -17,8 +17,9 @@ public class Customer
   public string State { get; set; }
   public int ZipCode { get; set; }
   public int UserId { get; set; } // Fk
+  public string Uid { get; set; }
   public User User { get; set; }
-  public List<Order> Orders { get; set; }
+  public List<Order> Orders { get; set; } = new List<Order>();
   public List<PaymentMethod> PaymentMethods { get; set; } = new List<PaymentMethod>();
   // Remember that EF Core can infer that UserId is a foreign key to User. It will create
   // a foreign key constraint on this column when it creates the DB.

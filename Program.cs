@@ -137,7 +137,7 @@ app.MapGet("/api/products/latest", (BangazonDbContext db) =>
 {
     return db.Products
         .Include(p => p.Store)
-        .ThenInclude(p => p.Seller)
+        .ThenInclude(s => s.Seller)
         .AsEnumerable()
         .OrderBy(p => p.DateAdded).Take(20).Reverse();
 });
@@ -225,7 +225,15 @@ app.MapPost("/api/order-items", (BangazonDbContext db, OrderItems orderItems ) =
     return Results.Created($"/api/order-items/{orderItems.Id}", orderItems);
 });
 
-app.MapGet("/api/orders", (BangazonDbContext db) => db.Orders.ToList());
+app.MapGet("/api/orders", (BangazonDbContext db, int customerId) =>
+{
+    return db.Orders
+        .Include(o => o.Customer)
+        .ThenInclude(o =>o.Orders)
+        .AsEnumerable()
+        .OrderBy(o => o.CustomerId)
+        .ToList();
+});
 app.MapGet("/api/order/{id}", (BangazonDbContext db, int id) =>
 {
     return db.Orders.Include(o => o.Customer).SingleOrDefault(o => o.Id == id);

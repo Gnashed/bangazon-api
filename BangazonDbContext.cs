@@ -39,12 +39,12 @@ public class BangazonDbContext : DbContext
       new Customer
       {
         Id = 1, FirstName = "Tion", LastName = "Blackmon", Address = "1234 Apple Rd.",
-        City = "Nashville", State = "TN", ZipCode = 37000, UserId = 1
+        City = "Nashville", State = "TN", ZipCode = 37000, UserId = 1, Uid = "eBBiuMs6zCYuRFk5657mXQBemjh1"
       },
       new Customer
       {
         Id = 2, FirstName = "Admin", LastName = "(SWE)", Address = "HQ",
-        City = "Nashville", State = "TN", ZipCode = 37000, UserId = 2
+        City = "Nashville", State = "TN", ZipCode = 37000, UserId = 2, Uid = "zmwuMjpI5RXABj6mImfK2O586Qf1"
       },
     });
     
