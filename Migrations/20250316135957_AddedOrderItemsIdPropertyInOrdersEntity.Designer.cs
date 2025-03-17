@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(BangazonDbContext))]
-    partial class BangazonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250316135957_AddedOrderItemsIdPropertyInOrdersEntity")]
+    partial class AddedOrderItemsIdPropertyInOrdersEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,6 +117,9 @@ namespace Bangazon.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<int>("OrderItemsId")
+                        .HasColumnType("integer");
+
                     b.Property<decimal>("OrderTotal")
                         .HasColumnType("numeric");
 
@@ -139,21 +145,30 @@ namespace Bangazon.Migrations
                             Id = 1,
                             CustomerId = 1,
                             IsCompleted = true,
-                            OrderDate = new DateTime(2025, 3, 16, 19, 49, 50, 893, DateTimeKind.Local).AddTicks(6560),
-                            OrderTotal = 250.00m,
+                            OrderDate = new DateTime(2025, 3, 16, 8, 59, 56, 914, DateTimeKind.Local).AddTicks(6100),
+                            OrderItemsId = 1,
+                            OrderTotal = 25000m,
                             PaymentMethodId = 1
                         });
                 });
 
             modelBuilder.Entity("Bangazon.Models.OrderItems", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
                     b.Property<int>("OrderId")
                         .HasColumnType("integer");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("integer");
 
-                    b.HasKey("OrderId", "ProductId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
@@ -162,23 +177,9 @@ namespace Bangazon.Migrations
                     b.HasData(
                         new
                         {
+                            Id = 1,
                             OrderId = 1,
                             ProductId = 1
-                        },
-                        new
-                        {
-                            OrderId = 1,
-                            ProductId = 3
-                        },
-                        new
-                        {
-                            OrderId = 1,
-                            ProductId = 5
-                        },
-                        new
-                        {
-                            OrderId = 1,
-                            ProductId = 7
                         });
                 });
 
@@ -276,7 +277,7 @@ namespace Bangazon.Migrations
                             Description = "The EVGA GeForce RTX 3060 12GB provides players with the ability to vanquish 1080p and 1440p gaming...",
                             ImageUrl = "https://i.pinimg.com/originals/8c/4a/a4/8c4aa4434669caabab3ef0e0fea4958d.jpg",
                             Name = "EVGA GeForce RTX 3060 XC 12GB",
-                            Price = 250.00m,
+                            Price = 25000m,
                             QuantityAvailable = 25,
                             StoreId = 1
                         },
@@ -288,7 +289,7 @@ namespace Bangazon.Migrations
                             Description = "The AMD Ryzen 7 5800X is built on the Zen 3 architecture, offering 8 cores and 16 threads...",
                             ImageUrl = "https://www.techinn.com/f/13795/137954422/amd-ryzen-7-5800x-3.8ghz.jpg",
                             Name = "AMD Ryzen 7 5800X",
-                            Price = 350.00m,
+                            Price = 35000m,
                             QuantityAvailable = 15,
                             StoreId = 1
                         },
@@ -300,7 +301,7 @@ namespace Bangazon.Migrations
                             Description = "The ASUS ROG Strix B550-F Gaming motherboard is designed for AMD Ryzen processors...",
                             ImageUrl = "https://images.anandtech.com/doci/15868/ROG-STRIX-B550-F-GAMING-WI-FI-What_s-inside-the-Box.jpg",
                             Name = "ASUS ROG Strix B550-F Gaming",
-                            Price = 180.00m,
+                            Price = 18000m,
                             QuantityAvailable = 10,
                             StoreId = 1
                         },
@@ -312,7 +313,7 @@ namespace Bangazon.Migrations
                             Description = "Corsair Vengeance RGB Pro series DDR4 memory is designed for high-performance overclocking...",
                             ImageUrl = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6449/6449223_sd.jpg",
                             Name = "Corsair Vengeance RGB Pro 32GB",
-                            Price = 150.00m,
+                            Price = 15000m,
                             QuantityAvailable = 20,
                             StoreId = 1
                         },
@@ -324,7 +325,7 @@ namespace Bangazon.Migrations
                             Description = "Official size and weight, indoor/outdoor use.",
                             ImageUrl = "https://cdn4.volusion.store/phzup-xttqn/v/vspfiles/photos/63-306E-2.jpg?v-cache=1640967916",
                             Name = "Spalding NBA Varsity Basketball (outdoor)",
-                            Price = 29.99m,
+                            Price = 2999m,
                             QuantityAvailable = 15,
                             StoreId = 2
                         },
@@ -336,7 +337,7 @@ namespace Bangazon.Migrations
                             Description = "Lightweight and breathable, with Dri-FIT technology.",
                             ImageUrl = "https://i.ebayimg.com/images/g/YlgAAOSw~WpgqyDw/s-l1200.jpg",
                             Name = "Nike Elite Basketball Shorts",
-                            Price = 45.00m,
+                            Price = 4500m,
                             QuantityAvailable = 30,
                             StoreId = 2
                         },
@@ -348,7 +349,7 @@ namespace Bangazon.Migrations
                             Description = "High-quality composite leather, soft feel and grip.",
                             ImageUrl = "https://i5.walmartimages.com/asr/b624338a-fe3a-4036-92c7-3e5dfc3d41e1_1.660a529a42734dc1008fc53ada274653.jpeg",
                             Name = "Wilson Evolution Basketball",
-                            Price = 64.99m,
+                            Price = 6499m,
                             QuantityAvailable = 20,
                             StoreId = 2
                         },
@@ -360,7 +361,7 @@ namespace Bangazon.Migrations
                             Description = "Iconic design with superior traction and support.",
                             ImageUrl = "https://i.ebayimg.com/00/s/MTI3NlgxMjgw/z/uCMAAOSw0x1k5cIg/$_57.JPG?set_id=8800005007",
                             Name = "Air Jordan 13 Retro Basketball Shoes (RED/WHITE)",
-                            Price = 120.00m,
+                            Price = 12000m,
                             QuantityAvailable = 10,
                             StoreId = 2
                         },
@@ -372,7 +373,7 @@ namespace Bangazon.Migrations
                             Description = "Compression sleeve for improved circulation and performance.",
                             ImageUrl = "https://i.ebayimg.com/images/g/SRIAAOSwRwFfWx36/s-l1200.jpg",
                             Name = "Adidas Shooting Sleeve",
-                            Price = 18.99m,
+                            Price = 1899m,
                             QuantityAvailable = 25,
                             StoreId = 2
                         },
@@ -384,7 +385,7 @@ namespace Bangazon.Migrations
                             Description = "Moisture-wicking and cushioned for comfort.",
                             ImageUrl = "https://www.kicksown.com/cdn/shop/files/20240821172318.jpg",
                             Name = "Under Armour Basketball Socks",
-                            Price = 14.99m,
+                            Price = 1499m,
                             QuantityAvailable = 40,
                             StoreId = 2
                         },
@@ -396,7 +397,7 @@ namespace Bangazon.Migrations
                             Description = "Adjustable height, weather-resistant material.",
                             ImageUrl = "https://m.media-amazon.com/images/I/61CKDFncGbL._AC_UF1000,1000_QL80_.jpg",
                             Name = "Basketball Hoop with Stand",
-                            Price = 199.99m,
+                            Price = 19999m,
                             QuantityAvailable = 5,
                             StoreId = 2
                         },
@@ -408,7 +409,7 @@ namespace Bangazon.Migrations
                             Description = "Used in official FIBA games, premium feel.",
                             ImageUrl = "https://shop.moltensports.jp/cdn/shop/articles/20210902_01_01.png?v=1644331911",
                             Name = "Molten Official Game Ball",
-                            Price = 89.99m,
+                            Price = 8999m,
                             QuantityAvailable = 12,
                             StoreId = 2
                         },
@@ -420,7 +421,7 @@ namespace Bangazon.Migrations
                             Description = "Pair of adjustable dumbbells with weight range from 5 to 52.5 lbs.",
                             ImageUrl = "https://www.bowflex.com/dw/image/v2/AAYW_PRD/on/demandware.static/-/Sites-nautilus-master-catalog/default/dwf21fb1cf/images/bfx/weights/100131/bowflex-selecttech-552-dumbbell-weights-hero.jpg?sw=2600&sh=1464&sm=fit",
                             Name = "Bowflex SelectTech 552 Adjustable Dumbbells",
-                            Price = 349.99m,
+                            Price = 34999m,
                             QuantityAvailable = 10,
                             StoreId = 3
                         },
@@ -432,7 +433,7 @@ namespace Bangazon.Migrations
                             Description = "High-end stationary bike with live and on-demand classes.",
                             ImageUrl = "https://res.cloudinary.com/peloton-cycle/image/fetch/dpr_2.0,f_auto,q_auto:good,w_768/https://images.ctfassets.net/7vk8puwnesgc/570NDQUa4nJVo466mxbUuv/f55258ef9420c35a68da5d5f22146184/20_5632_PELOTON_BIKE_RENDERS_TITAN-ALT_M_BOTH_W1_F_LAYERED_NO_WEIGHTS.jpg",
                             Name = "Peloton Bike+",
-                            Price = 2495.00m,
+                            Price = 249500m,
                             QuantityAvailable = 5,
                             StoreId = 3
                         },
@@ -444,7 +445,7 @@ namespace Bangazon.Migrations
                             Description = "Portable, full-body workout system using suspension straps.",
                             ImageUrl = "https://www.trxtraining.com/cdn/shop/products/21_09_03_Lifestyle_Yoga9924_1_1800x.jpg",
                             Name = "TRX Suspension Trainer",
-                            Price = 199.99m,
+                            Price = 19999m,
                             QuantityAvailable = 15,
                             StoreId = 3
                         },
@@ -456,7 +457,7 @@ namespace Bangazon.Migrations
                             Description = "High-end treadmill with incline and interactive training.",
                             ImageUrl = "https://images.squarespace-cdn.com/content/v1/5d910d397c5f112386050a97/1683788362652-OHHR47KPE93R120TDBGJ/4639edfc-62e4-43d9-ba0b-42993121c7a8.png?",
                             Name = "NordicTrack Commercial 1750 Treadmill",
-                            Price = 2299.99m,
+                            Price = 229999m,
                             QuantityAvailable = 8,
                             StoreId = 3
                         },
@@ -468,7 +469,7 @@ namespace Bangazon.Migrations
                             Description = "Deep tissue muscle treatment with customizable speed settings.",
                             ImageUrl = "https://m.media-amazon.com/images/I/61HwDKWhdML.jpg",
                             Name = "Theragun Elite Percussion Massager",
-                            Price = 399.99m,
+                            Price = 39999m,
                             QuantityAvailable = 12,
                             StoreId = 3
                         },
@@ -480,7 +481,7 @@ namespace Bangazon.Migrations
                             Description = "Advanced fitness tracker with heart rate monitoring and GPS.",
                             ImageUrl = "https://m.media-amazon.com/images/I/61wn2jfhBkL.jpg",
                             Name = "Fitbit Charge 6",
-                            Price = 149.99m,
+                            Price = 14999m,
                             QuantityAvailable = 20,
                             StoreId = 3
                         },
@@ -492,7 +493,7 @@ namespace Bangazon.Migrations
                             Description = "Heavy-duty air bike with reinforced steel construction.",
                             ImageUrl = "https://i0.wp.com/asmanyreviewsaspossible.com/wp-content/uploads/2017/12/echo-bike-slider-5-new.jpg",
                             Name = "Rogue Echo Bike",
-                            Price = 795.00m,
+                            Price = 79500m,
                             QuantityAvailable = 7,
                             StoreId = 3
                         },
@@ -504,7 +505,7 @@ namespace Bangazon.Migrations
                             Description = "Lightweight percussion massage gun for muscle recovery.",
                             ImageUrl = "https://mygalf.com/uploads/product_image/1669367949Hypervolt2_MainPic.jpeg",
                             Name = "Hyperice Hypervolt Go 2",
-                            Price = 129.99m,
+                            Price = 12999m,
                             QuantityAvailable = 18,
                             StoreId = 3
                         },
@@ -707,7 +708,7 @@ namespace Bangazon.Migrations
                         .IsRequired();
 
                     b.HasOne("Bangazon.Models.Product", "Product")
-                        .WithMany("OrderItems")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -773,11 +774,6 @@ namespace Bangazon.Migrations
                 });
 
             modelBuilder.Entity("Bangazon.Models.Order", b =>
-                {
-                    b.Navigation("OrderItems");
-                });
-
-            modelBuilder.Entity("Bangazon.Models.Product", b =>
                 {
                     b.Navigation("OrderItems");
                 });

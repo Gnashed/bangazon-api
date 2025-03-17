@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(BangazonDbContext))]
-    partial class BangazonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250317000643_ManyToManyChangesOnOrderItemsJoinTable")]
+    partial class ManyToManyChangesOnOrderItemsJoinTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,7 +142,7 @@ namespace Bangazon.Migrations
                             Id = 1,
                             CustomerId = 1,
                             IsCompleted = true,
-                            OrderDate = new DateTime(2025, 3, 16, 19, 49, 50, 893, DateTimeKind.Local).AddTicks(6560),
+                            OrderDate = new DateTime(2025, 3, 16, 19, 6, 43, 164, DateTimeKind.Local).AddTicks(3590),
                             OrderTotal = 250.00m,
                             PaymentMethodId = 1
                         });
@@ -164,21 +167,6 @@ namespace Bangazon.Migrations
                         {
                             OrderId = 1,
                             ProductId = 1
-                        },
-                        new
-                        {
-                            OrderId = 1,
-                            ProductId = 3
-                        },
-                        new
-                        {
-                            OrderId = 1,
-                            ProductId = 5
-                        },
-                        new
-                        {
-                            OrderId = 1,
-                            ProductId = 7
                         });
                 });
 

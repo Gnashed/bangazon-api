@@ -20,6 +20,10 @@ public class Product
   public Store Store { get; set; }
   public string ImageUrl { get; set; }
   public DateTime DateAdded { get; set; }
+  
+  // Collection navigation property
+  public IEnumerable<OrderItems> OrderItems { get; set; }
+  
   // Remember that EF Core can infer that StoreId is a foreign key to Store. It will create
   // a foreign key constraint on this column when it creates the DB.
 }

@@ -206,33 +206,34 @@ app.MapDelete("/api/customer/{id}", (BangazonDbContext db, int id) =>
     {
         return Results.NotFound();
     }
+
     db.Customers.Remove(customerToDelete);
     db.SaveChanges();
     return Results.NoContent();
 });
 
-app.MapGet("/api/order-items/{id}", (BangazonDbContext db, int id) =>
+app.MapGet("/api/orders/{orderId}/items", (BangazonDbContext db, int orderId) =>
 {
-    return db.OrderItems
-        .Include(o => o.Order)
-        .Include(o => o.Product)
-        .SingleOrDefault(o => o.Id == id);
-});
-app.MapPost("/api/order-items", (BangazonDbContext db, OrderItems orderItems ) =>
-{
-    db.OrderItems.Add(orderItems);
-    db.SaveChanges();
-    return Results.Created($"/api/order-items/{orderItems.Id}", orderItems);
-});
-
-app.MapGet("/api/orders", (BangazonDbContext db, int customerId) =>
-{
-    return db.Orders
-        .Include(o => o.Customer)
-        .ThenInclude(o =>o.Orders)
-        .AsEnumerable()
-        .OrderBy(o => o.CustomerId)
+   var orderItems = db.OrderItems
+        .Where(oi => oi.OrderId == orderId)
+        .Include(oi => oi.Order)
+        .Include(oi => oi.Product)
+        .Select(oi => new
+        {
+            OrderId = oi.OrderId,
+            ProductId = oi.Product.Id,
+            ProductName = oi.Product.Name,
+            ProductPrice = oi.Product.Price,
+            OrderPrice = oi.Order.OrderTotal,
+            OrderDate = oi.Order.OrderDate,
+        })
         .ToList();
+   if (orderItems == null || orderItems.Count == 0)
+   {
+       return Results.NotFound($"No order items found for order {orderId}");
+   }
+   return Results.Ok(orderItems);
+   
 });
 app.MapGet("/api/order/{id}", (BangazonDbContext db, int id) =>
 {

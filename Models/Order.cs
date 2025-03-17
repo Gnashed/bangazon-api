@@ -10,4 +10,7 @@ public class Order
   public Customer Customer { get; set; }
   public int PaymentMethodId { get; set; } // FK
   public PaymentMethod PaymentMethod { get; set; }
+  
+  // Collection navigation property
+  public IEnumerable<OrderItems> OrderItems { get; set; }
 }
