@@ -9,6 +9,8 @@ public class Order
   public int CustomerId { get; set; } // FK
   public Customer Customer { get; set; }
   public int PaymentMethodId { get; set; } // FK
+  public string OrderStatus { get; set; }
+  public DateTime EstimatedDeliveryDate { get; set; }
   public PaymentMethod PaymentMethod { get; set; }
   
   // Collection navigation property

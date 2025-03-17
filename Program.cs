@@ -195,7 +195,11 @@ app.MapGet("/api/customer/{id}", (BangazonDbContext db, int id) =>
 // GET Customer by uid.
 app.MapGet("/api/customer", (BangazonDbContext db, string uid) =>
 {
-    return db.Customers.SingleOrDefault(c => c.Uid == uid);
+    return db.Customers
+        .Include(c => c.Orders)
+        .ThenInclude(o => o.OrderItems)
+        .ThenInclude(oi => oi.Product)
+        .SingleOrDefault(c => c.Uid == uid);
 });
 app.MapPost("/api/customer", (BangazonDbContext db, Customer customer) =>
 {
@@ -254,7 +258,11 @@ app.MapGet("/api/customer/{customerId}/orders", (BangazonDbContext db, int custo
 
 app.MapGet("/api/order/{id}", (BangazonDbContext db, int id) =>
 {
-    return db.Orders.Include(o => o.Customer).SingleOrDefault(o => o.Id == id);
+    return db.Orders
+        .Include(o => o.Customer)
+        .Include(o => o.OrderItems)
+        .ThenInclude(oi => oi.Product)
+        .SingleOrDefault(o => o.Id == id);
 });
 app.MapPost("/api/order", (BangazonDbContext db, Order order) =>
 {

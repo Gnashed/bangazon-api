@@ -353,6 +353,8 @@ public class BangazonDbContext : DbContext
         OrderDate = DateTime.Now, 
         CustomerId = 1, 
         PaymentMethodId = 1,
+        EstimatedDeliveryDate = new DateTime(2025, 3, 13),
+        OrderStatus = "Shipped",
       }
     });
     
