@@ -192,6 +192,11 @@ app.MapGet("/api/customer/{id}", (BangazonDbContext db, int id) =>
         .Include(c => c.PaymentMethods)
         .Single(c => c.Id == id);
 });
+// GET Customer by uid.
+app.MapGet("/api/customer", (BangazonDbContext db, string uid) =>
+{
+    return db.Customers.SingleOrDefault(c => c.Uid == uid);
+});
 app.MapPost("/api/customer", (BangazonDbContext db, Customer customer) =>
 {
     db.Customers.Add(customer);
@@ -234,7 +239,6 @@ app.MapGet("/api/orders/{orderId}/items", (BangazonDbContext db, int orderId) =>
        return Results.NotFound($"No order items found for order {orderId}");
    }
    return Results.Ok(orderItems);
-   
 });
 // GET Customer's orders.
 app.MapGet("/api/customer/{customerId}/orders", (BangazonDbContext db, int customerId) =>
