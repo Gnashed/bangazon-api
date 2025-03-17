@@ -212,6 +212,7 @@ app.MapDelete("/api/customer/{id}", (BangazonDbContext db, int id) =>
     return Results.NoContent();
 });
 
+// GET a single order items.
 app.MapGet("/api/orders/{orderId}/items", (BangazonDbContext db, int orderId) =>
 {
    var orderItems = db.OrderItems
@@ -224,7 +225,7 @@ app.MapGet("/api/orders/{orderId}/items", (BangazonDbContext db, int orderId) =>
             ProductId = oi.Product.Id,
             ProductName = oi.Product.Name,
             ProductPrice = oi.Product.Price,
-            OrderPrice = oi.Order.OrderTotal,
+            OrderTotal = oi.Order.OrderTotal,
             OrderDate = oi.Order.OrderDate,
         })
         .ToList();
@@ -235,6 +236,18 @@ app.MapGet("/api/orders/{orderId}/items", (BangazonDbContext db, int orderId) =>
    return Results.Ok(orderItems);
    
 });
+// GET Customer's orders.
+app.MapGet("/api/customer/{customerId}/orders", (BangazonDbContext db, int customerId) =>
+{
+    var customerOrders = db.Orders
+        .Where(o => o.CustomerId == customerId)
+        .Include(o => o.Customer)
+        .Include(o => o.OrderItems)
+        .ThenInclude(oi => oi.Product)
+        .ToList();
+    return Results.Ok(customerOrders);
+});
+
 app.MapGet("/api/order/{id}", (BangazonDbContext db, int id) =>
 {
     return db.Orders.Include(o => o.Customer).SingleOrDefault(o => o.Id == id);
