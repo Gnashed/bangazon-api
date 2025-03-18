@@ -373,13 +373,13 @@ public class BangazonDbContext : DbContext
     modelBuilder.Entity<OrderItems>().HasKey(oi => new { oi.OrderId, oi.ProductId });
     modelBuilder.Entity<OrderItems>().HasData(new OrderItems[]
     {
-      new OrderItems { OrderId = 1, ProductId = 1 },
-      new OrderItems { OrderId = 1, ProductId = 3},
-      new OrderItems { OrderId = 1, ProductId = 5},
-      new OrderItems { OrderId = 1, ProductId = 7},
-      new OrderItems { OrderId = 2, ProductId = 9},
-      new OrderItems { OrderId = 2, ProductId = 10},
-      new OrderItems { OrderId = 2, ProductId = 11},
+      new OrderItems { OrderId = 1, ProductId = 1, ItemQuantity = 1 },
+      new OrderItems { OrderId = 1, ProductId = 3, ItemQuantity = 1 },
+      new OrderItems { OrderId = 1, ProductId = 5, ItemQuantity = 3 },
+      new OrderItems { OrderId = 1, ProductId = 7, ItemQuantity = 1 },
+      new OrderItems { OrderId = 2, ProductId = 9, ItemQuantity = 2 },
+      new OrderItems { OrderId = 2, ProductId = 10, ItemQuantity = 2 },
+      new OrderItems { OrderId = 2, ProductId = 11, ItemQuantity = 6 },
     });
   }
 }

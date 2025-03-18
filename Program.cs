@@ -262,6 +262,7 @@ app.MapGet("/api/order/{id}", (BangazonDbContext db, int id) =>
         .Include(o => o.Customer)
         .Include(o => o.OrderItems)
         .ThenInclude(oi => oi.Product)
+        .ThenInclude(p => p.Store)
         .SingleOrDefault(o => o.Id == id);
 });
 app.MapGet("/api/orders/history", (BangazonDbContext db, string uid) =>
