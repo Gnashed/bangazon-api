@@ -9,10 +9,10 @@ public class Order
   public int CustomerId { get; set; } // FK
   public Customer Customer { get; set; }
   public int PaymentMethodId { get; set; } // FK
+  public PaymentMethod PaymentMethod { get; set; }
   public string OrderStatus { get; set; }
   public DateTime EstimatedDeliveryDate { get; set; }
-  public PaymentMethod PaymentMethod { get; set; }
   
   // Collection navigation property
-  public IEnumerable<OrderItems> OrderItems { get; set; }
+  public ICollection<OrderItems> OrderItems { get; set; }
 }

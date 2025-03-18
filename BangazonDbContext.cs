@@ -350,11 +350,22 @@ public class BangazonDbContext : DbContext
         Id = 1, 
         IsCompleted = true, 
         OrderTotal = 250.00M, 
-        OrderDate = DateTime.Now, 
+        OrderDate = new DateTime(2025, 3, 13), 
         CustomerId = 1, 
         PaymentMethodId = 1,
-        EstimatedDeliveryDate = new DateTime(2025, 3, 13),
+        EstimatedDeliveryDate = new DateTime(2025, 3, 19),
         OrderStatus = "Shipped",
+      },
+      new Order
+      {
+        Id = 2,
+        IsCompleted = true,
+        OrderTotal = 2_000.00M,
+        OrderDate = new DateTime(2025, 3, 10),
+        CustomerId = 1,
+        PaymentMethodId = 1,
+        EstimatedDeliveryDate = new DateTime(2025, 3, 15),
+        OrderStatus = "Delivered",
       }
     });
     
@@ -363,9 +374,12 @@ public class BangazonDbContext : DbContext
     modelBuilder.Entity<OrderItems>().HasData(new OrderItems[]
     {
       new OrderItems { OrderId = 1, ProductId = 1 },
-      new OrderItems {OrderId = 1, ProductId = 3},
+      new OrderItems { OrderId = 1, ProductId = 3},
       new OrderItems { OrderId = 1, ProductId = 5},
       new OrderItems { OrderId = 1, ProductId = 7},
+      new OrderItems { OrderId = 2, ProductId = 9},
+      new OrderItems { OrderId = 2, ProductId = 10},
+      new OrderItems { OrderId = 2, ProductId = 11},
     });
   }
 }

@@ -190,7 +190,7 @@ app.MapGet("/api/customer/{id}", (BangazonDbContext db, int id) =>
         .Include(c => c.User)
         .Include(c => c.Orders)
         .Include(c => c.PaymentMethods)
-        .Single(c => c.Id == id);
+        .SingleOrDefault(c => c.Id == id);
 });
 // GET Customer by uid.
 app.MapGet("/api/customer", (BangazonDbContext db, string uid) =>
@@ -244,7 +244,7 @@ app.MapGet("/api/orders/{orderId}/items", (BangazonDbContext db, int orderId) =>
    }
    return Results.Ok(orderItems);
 });
-// GET Customer's orders.
+// GET Customer's orders. TODO: MIGHT NOT NEED ANYMORE
 app.MapGet("/api/customer/{customerId}/orders", (BangazonDbContext db, int customerId) =>
 {
     var customerOrders = db.Orders
@@ -264,6 +264,25 @@ app.MapGet("/api/order/{id}", (BangazonDbContext db, int id) =>
         .ThenInclude(oi => oi.Product)
         .SingleOrDefault(o => o.Id == id);
 });
+app.MapGet("/api/orders/history", (BangazonDbContext db, string uid) =>
+{
+    var customerOrders = db.Orders
+        .Include(o => o.Customer)
+        .Include(o => o.OrderItems)
+        .ThenInclude(oi => oi.Product)
+        .Where(o => o.Customer.Uid == uid)
+        .ToList();
+    return customerOrders.Count == 0 ? Results.NotFound() : Results.Ok(customerOrders);
+});
+// app.MapGet("api/orders",  (BangazonDbContext db, string uid) =>
+// {
+//     var customerOrders = db.Orders
+//         .Where(o => o.Customer.Uid == uid)
+//         .Include(o => o.OrderItems)
+//         .ThenInclude(oi => oi.Product)
+//         .ToList();
+// //     return Results.Ok(customerOrders);
+// });
 app.MapPost("/api/order", (BangazonDbContext db, Order order) =>
 {
     db.Orders.Add(order);

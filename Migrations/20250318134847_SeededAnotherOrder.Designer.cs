@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(BangazonDbContext))]
-    partial class BangazonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250318134847_SeededAnotherOrder")]
+    partial class SeededAnotherOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,7 +163,7 @@ namespace Bangazon.Migrations
                             IsCompleted = true,
                             OrderDate = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OrderStatus = "Delivered",
-                            OrderTotal = 2000.00m,
+                            OrderTotal = 20.00m,
                             PaymentMethodId = 1
                         });
                 });
@@ -199,21 +202,6 @@ namespace Bangazon.Migrations
                         {
                             OrderId = 1,
                             ProductId = 7
-                        },
-                        new
-                        {
-                            OrderId = 2,
-                            ProductId = 9
-                        },
-                        new
-                        {
-                            OrderId = 2,
-                            ProductId = 10
-                        },
-                        new
-                        {
-                            OrderId = 2,
-                            ProductId = 11
                         });
                 });
 
