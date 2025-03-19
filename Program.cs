@@ -271,6 +271,7 @@ app.MapGet("/api/orders/history", (BangazonDbContext db, string uid) =>
         .Include(o => o.Customer)
         .Include(o => o.OrderItems)
         .ThenInclude(oi => oi.Product)
+        // .ThenInclude(p => p.Store)
         .Where(o => o.Customer.Uid == uid)
         .ToList();
     return customerOrders.Count == 0 ? Results.NotFound() : Results.Ok(customerOrders);
