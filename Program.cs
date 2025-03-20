@@ -196,6 +196,7 @@ app.MapGet("/api/customer/{id}", (BangazonDbContext db, int id) =>
 app.MapGet("/api/customer", (BangazonDbContext db, string uid) =>
 {
     return db.Customers
+        .Include(c =>  c.PaymentMethods)
         .Include(c => c.Orders)
         .ThenInclude(o => o.OrderItems)
         .ThenInclude(oi => oi.Product)
