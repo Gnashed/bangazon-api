@@ -141,6 +141,25 @@ app.MapGet("/api/products/latest", (BangazonDbContext db) =>
         .AsEnumerable()
         .OrderBy(p => p.DateAdded).Take(20).Reverse();
 });
+app.MapGet("/api/products/categories", (BangazonDbContext db) =>
+{
+    var productCategories = db.Products
+        .GroupBy(p => p.Category)
+        .Select(g => new
+        {
+            Category = g.Key,
+            ItemsAvailable = g.Count(),
+            Products = g.Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.Description,
+                })
+                .ToList()
+        })
+        .ToList();
+    return Results.Ok(productCategories);
+});
 app.MapGet("/api/product/{id}", (BangazonDbContext db, int id) =>
 {
     return db.Products
