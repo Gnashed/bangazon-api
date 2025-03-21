@@ -155,6 +155,7 @@ app.MapGet("/api/products/categories", (BangazonDbContext db) =>
                     p.Name,
                     p.Description,
                 })
+                .Take(3)
                 .ToList()
         })
         .ToList();
