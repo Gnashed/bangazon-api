@@ -313,7 +313,12 @@ app.MapPost("/api/order", (BangazonDbContext db, Order order) =>
     return Results.Created($"/api/order/{order.Id}", order);
 });
 
-app.MapGet("/api/payment-methods", (BangazonDbContext db) =>  db.PaymentMethods.ToList());
+app.MapGet("/api/payment-methods", (BangazonDbContext db, int customerId) =>
+{
+    return db.PaymentMethods
+        .Where(pm => pm.CustomerId == customerId)
+        .ToList();
+});
 app.MapPost("/api/payment-method", (BangazonDbContext db, PaymentMethod paymentMethod) =>
 {
     db.PaymentMethods.Add(paymentMethod);
