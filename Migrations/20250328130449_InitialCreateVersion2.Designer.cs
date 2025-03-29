@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(BangazonDbContext))]
-    [Migration("20250318182709_AddedColumnItemQuantityToOrderItemsEntity")]
-    partial class AddedColumnItemQuantityToOrderItemsEntity
+    [Migration("20250328130449_InitialCreateVersion2")]
+    partial class InitialCreateVersion2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -5,7 +5,7 @@
 namespace Bangazon.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedColumnItemQuantityToOrderItemsEntity : Migration
+    public partial class InitialCreateVersion2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

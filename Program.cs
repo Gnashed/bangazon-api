@@ -308,8 +308,23 @@ app.MapGet("/api/orders/history", (BangazonDbContext db, string uid) =>
 // });
 app.MapPost("/api/order", (BangazonDbContext db, Order order) =>
 {
+    Console.WriteLine("Received Order: ");
+    Console.WriteLine($"\tCustomerId: {order.CustomerId}");
+    Console.WriteLine($"\tOrderItems Count: {order.OrderItems?.Count}");
+    
     db.Orders.Add(order);
-    db.SaveChanges();
+    // db.SaveChanges();
+    // Console.WriteLine($"\tOrder Id: {order.Id}");
+
+    if (order.OrderItems?.Count > 0)
+    {
+        foreach (var item in order.OrderItems)
+        {
+            item.OrderId = order.Id;
+        }
+        db.OrderItems.AddRange(order.OrderItems);
+        db.SaveChanges();
+    }
     return Results.Created($"/api/order/{order.Id}", order);
 });
 
