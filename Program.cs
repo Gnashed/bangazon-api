@@ -328,6 +328,18 @@ app.MapPost("/api/order", (BangazonDbContext db, Order order) =>
     return Results.Created($"/api/order/{order.Id}", order);
 });
 
+app.MapDelete("/api/order/{id}", (BangazonDbContext db, int id) =>
+{
+    Order? orderMethodToDelete = db.Orders.SingleOrDefault(o => o.Id == id);
+    if (orderMethodToDelete == null)
+    {
+        return Results.NotFound();
+    }
+    db.Orders.Remove(orderMethodToDelete);
+    db.SaveChanges();
+    return Results.NoContent();
+});
+
 app.MapGet("/api/payment-methods", (BangazonDbContext db, int customerId) =>
 {
     return db.PaymentMethods
